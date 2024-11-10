@@ -10,17 +10,12 @@ nav:
   - 我:
     - ME/index.md
     - ME/introduction.md
-    - ME/profile.md
     - ME/contact.md
     - ME/account.md
-    - ME/description.md
     - ME/ability.md
-    - ME/experience.md
-    - ME/thu-curriculum.md
-    - ME/thu-certificate.md
-    - ME/daily-necessities.md
+    - ME/business-trip-necessities.md
     - ME/support.md
-  - CS 笔记:
+  - CS笔记:
     - CS/index.md
     - ChatGPT: CS/Chatgpt/ChatGPT_Cookbook.md    
     - Excel: CS/Excel/Excel-Cheatsheet.md
@@ -28,7 +23,7 @@ nav:
     - Regex: 
       - Regex-Buddy教程: CS/Regex/RegexBuddy-tutorial.md
       - 正则表达式: CS/Regex/regex-cheatsheet-examples.md
-     - Shell: CS/Shell /Shell_command_cookbook.md 
+    - Shell: CS/Shell /Shell_command_cookbook.md 
     - Vim: CS/Vim/vim-cheatsheet.md 
   - 家庭建设:
     - Family-Education/index.md
@@ -39,7 +34,7 @@ nav:
   - 写作:
     - Writing/index.md   
   - 转载:
-    - REPRODUCE/index.md 
+    - Reproduce/index.md 
   - 网站:
     # 访客打开网站第一个看到的是 docs/index.md
     # 构建网站时，不用管报错 "The following pages exist in the docs directory, but are not included in the "nav" configuration: index.md"
