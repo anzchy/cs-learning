@@ -2753,7 +2753,7 @@ Python Regex Cheatsheet — https://www.debuggex.com/cheatsheet/regex/python
 
 先在 Settings➡️Advanced Settings Editor 中，选中 Keybord shortcuts，右上角有个 json settings editor，但是此时没有显示出代码，
 
-![image-20231116225902561](/Users/chengyong/Library/Application Support/typora-user-images/image-20231116225902561.png)
+![image-20231116225902561](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20231116225902561.png)
 
 接下来再点击一次左边的`Keyboard Shortcuts`才能显示出Json代码。
 

@@ -62,7 +62,7 @@ https://cs50.harvard.edu/x/2024/psets/1/credit/
 
 问题：典型的要去掉空行的字符串是这样的，通常 word 中也很难处理
 
-![image-20240907203002611](./assets/image-20240907203002611.png)
+![image-20240907203002611](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240907203002611.png)
 
 查询多行的pattern:
 
@@ -70,7 +70,7 @@ https://cs50.harvard.edu/x/2024/psets/1/credit/
 
 如果有三行，再添加一个`\s*\n`
 
-![image-20240907203108418](./assets/image-20240907203108418.png)
+![image-20240907203108418](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240907203108418.png)
 
 ### 指定英文单词简写或者全称
 
@@ -175,7 +175,7 @@ False
 \b\w*[aeiou]\s[aeiou]\w*\b
 ```
 
-![image-20240829095548256](./assets/image-20240829095548256.png)
+![image-20240829095548256](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240829095548256.png)
 
 
 
@@ -242,11 +242,11 @@ r"\b\d{6,}\b" #即使左右两边有字符或者其他汉字、中文符号等�
 
 但是之前尝试`^\d{6,}$`失败了，经过测试，它只适合前后都没有字符的情况。
 
-![image-20240827195627561](./assets/image-20240827195627561.png)
+![image-20240827195627561](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240827195627561.png)
 
 现在 WPS Excel 也支持正则表达式，提取日期函数如下：
 
-![image-20240827201650118](./assets/image-20240827201650118.png)
+![image-20240827201650118](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240827201650118.png)
 
 
 
@@ -346,7 +346,7 @@ nagative lookbehind
 
 下面的 pattern 含义，是只排除类似于`$xx` 这样的组合，`xx$`是满足 regex 要求的。
 
-![image-20240908003843759](./assets/image-20240908003843759.png)
+![image-20240908003843759](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240908003843759.png)
 
 
 
@@ -433,7 +433,7 @@ Matched Result：
 
 这里有个 bug，就是 255.255.255.255，只能匹配 255.255.255.25，最后一个 5 消失了。
 
-![image-20240904004107718](./assets/image-20240904004107718.png)
+![image-20240904004107718](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240904004107718.png)
 
 答案在于 OR 的三种情况的先后顺序很重要，由于`([0,1]?[0-9]?[0-9])`这个公式排在第一位，那么 匹配255 时，前面两个字符25 已经能够满足匹配了，后面的两种情况 regex engine 自动忽略了。所以要把第一种情况放在OR最后。
 
@@ -449,7 +449,7 @@ Matched Result：
 
 搞定了：
 
-![image-20240904004301994](./assets/image-20240904004301994.png)
+![image-20240904004301994](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240904004301994.png)
 
 ### Email address
 
@@ -497,7 +497,7 @@ r"<([A-Z][A-Z0-9]*)\b[^>]*>.*?</\1>"
 
 `</\1>`其中 `</ >` 是 literal ，`\1`是 reference。
 
-![image-20240901230729832](./assets/image-20240901230729832.png)
+![image-20240901230729832](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240901230729832.png)
 
 
 
@@ -549,7 +549,7 @@ append：在当前的文件名`末尾`添加指定文字。
 
 核心问题是匹配所有中文字符，现在 RegexBuddy 上测试 pattern
 
-![image-20240902004237884](./assets/image-20240902004237884.png)
+![image-20240902004237884](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240902004237884.png)
 
 这里测试成功了，具体来说：
 
@@ -563,7 +563,7 @@ match pattern：`([一-龟0-9]+)-(\d+)`
 
 然后，在 NameChanger 中测试，通过了。
 
-![image-20240902005411944](./assets/image-20240902005411944.png)
+![image-20240902005411944](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240902005411944.png)
 
 > 以下是 rename app 中的帮助页：
 
@@ -573,15 +573,15 @@ For each file in the table, NameChanger will find the first block of text that m
 The [*Force Unique*](../General/Options.html) option can be used to prevent name collisions from the resulting name changes.
 To avoid changing file extensions, the [*Hide Extensions*](../General/Options.html) option can be used.
 
-![image-20240902005021709](./assets/image-20240902005021709.png)
+![image-20240902005021709](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240902005021709.png)
 
 For back references use $1, $2, etc, to match the corresponding parenthesized grouping from the matching text. This is an excellent way to rearrange existing filenames.
 
-![image-20240902004944739](./assets/image-20240902004944739.png)
+![image-20240902004944739](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240902004944739.png)
 
 > 注意：重命名doc pdf md 等文档的时候，最好把后缀名隐藏掉，在 Menu 中去找：
 
-![image-20240902005306065](./assets/image-20240902005306065.png)
+![image-20240902005306065](https://picbox-1313243162.cos.ap-nanjing.myqcloud.com/image-20240902005306065.png)
 
 
 
