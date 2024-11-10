@@ -26,8 +26,8 @@ jobs:
       - name: Build the MkDocs site
         run: mkdocs build
 
-      - name: Copy CNAME file
-        run: cp CNAME site/
+      #- name: Copy CNAME file
+      #  run: cp CNAME site/
 
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force --ignore-version
