@@ -115,7 +115,7 @@
 
 注意：右边的 example request，可以选择 curl 还是 Python 语言
 
-![image-20240821080239638](../../../../Library/Application Support/typora-user-images/image-20240821080239638.png)
+![image-20240821080239638](./assets/image-20240821080239638.png)
 
 
 
@@ -237,11 +237,11 @@ for i in list_instance:
 
 首先是搞清楚其中的数据结构，通常长这样。
 
-![image-20240823003113960](../../../../Library/Application Support/typora-user-images/image-20240823003113960.png)
+![image-20240823003113960](./assets/image-20240823003113960.png)
 
 方法就是通过各种打印，一级一级的输出 dict.keys()。
 
-![image-20240823003319775](../../../../Library/Application Support/typora-user-images/image-20240823003319775.png)
+![image-20240823003319775](./assets/image-20240823003319775.png)
 
 以下是编程序时候注意事项：
 
@@ -249,7 +249,7 @@ for i in list_instance:
 
 其次记得，容易出现 index out of range，这里可能是因为在上面几个级别结构中，可能有的 key 没有 value，所以要嵌套好几层，在赋值之前，检查是否存在 value，如果是 dict 对象，可以用 dict.get('key1',[])来获取对应的 value1，然后再用 if 语句判断是否存在，存在再赋值。
 
-![image-20240823004002085](../../../../Library/Application Support/typora-user-images/image-20240823004002085.png)
+![image-20240823004002085](./assets/image-20240823004002085.png)
 
 
 
