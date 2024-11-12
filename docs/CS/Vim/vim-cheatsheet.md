@@ -1,204 +1,16 @@
-## 一、各软件中使用类似 VIM 的体验
-
-**Jupyterlab Desktop** 
-
-内置了 Enable VIM mode，见`Settings- Enable Vim Mode`
-
-<img src="./assets/image-20241109184331325.png" alt="image-20241109184331325" style="zoom:33%;" />
-
-
-
-### 在微软 Word 中用 VIM:
-
-我自己写了插件，可以参考我的文章：https://jackcheng.chat/2024/11/03/vim-word-experience/
-
-
-
-### Chrome 中使用 VIM
-
-https://vimium.github.io/ 用这个插件。
-
-
-
-### 在 Vnote 中使用 VIM的部分功能：
-
-https://gitee.com/jiangsheng1987/VNote/blob/master/src/resources/docs/shortcuts_zh.md
-
-vNote**快捷键说明**
-
-1. 以下按键除特别说明外，都不区分大小写；
-2. 在macOS下，`Ctrl`对应于`Command`,在Vim模式下除外。
-
-#### 常规快捷键
-
-- `Ctrl+E E`
-  是否扩展编辑区域。
-- `Ctrl+Alt+N`
-  在当前文件夹下新建笔记。
-- `Ctrl+F`
-  页内查找和替换。
-- `Ctrl+Alt+F`
-  高级查找。
-- `Ctrl+Q`
-  退出VNote。
-- `Ctrl+J`/`Ctrl+K`
-  在笔记本列表、文件夹列表、笔记列表、已打开笔记列表和大纲目录中，均支持`Ctrl+J`和`Ctrl+K`导航。
-- `Ctrl+Left Mouse`
-  任意滚动。
-- `Ctrl+Shift+T`
-  恢复上一个关闭的文件。
-- `Ctrl+Alt+L`
-  打开灵犀页。
-- `Ctrl+T`
-  编辑当前笔记或保存更改并退出编辑模式。
-- `Ctrl+G`
-  激活通用入口。
-
-#### 阅读模式
-
-- `H`/`J`/`K`/`L`
-  导航，对应于左/下/上/右方向键。
-
-- `Ctrl+U`
-  向上滚动半屏。
-
-- `Ctrl+D`
-  向下滚动半屏。
-
-- `gg`/`G`
-  跳转到笔记的开始或结尾。（区分大小写）。
-
-- `Ctrl + +/-`
-  放大/缩小页面。
-
-- `Ctrl+Wheel`
-  鼠标滚轮实现放大/缩小页面。
-
-- `Ctrl+0`
-  恢复页面大小为100%。
-
-- 标题跳转
-
-  - `<N>[[`：跳转到上`N`个标题；
-  - `<N>]]`: 跳转到下`N`个标题；
-  - `<N>[]`：跳转到上`N`个同层级的标题；
-  - `<N>][`：跳转到下`N`个同层级的标题；
-  - `<N>[{`：跳转到上`N`个高一层级的标题；
-  - `<N>]}`：跳转到下`N`个高一层级的标题；
-
-- ```
-  /
-  ```
-
-  或
-
-  ```
-  ?
-  ```
-
-  向前或向后查找
-
-  - `N`：查找下一个匹配；
-  - `Shift+N`：查找上一个匹配；
-
-- ```
-  :
-  ```
-
-  执行Vim命令
-
-  - `:q`：关闭当前笔记；
-  - `:noh[lsearch]`：清空查找高亮；
-
-#### 编辑模式
-
-- `Ctrl+S`
-  保存当前更改。
-- `Ctrl + +/-`
-  放大/缩小页面。
-- `Ctrl+Wheel`
-  鼠标滚轮实现放大/缩小页面。
-- `Ctrl+0`
-  恢复页面大小为100%。
-- `Ctrl+J/K`
-  向下/向上滚动页面，不会改变光标。
-
-##### 文本编辑
-
-- `Ctrl+B`
-  插入粗体；再次按`Ctrl+B`退出。如果已经选择文本，则将当前选择文本加粗。
-- `Ctrl+I`
-  插入斜体；再次按`Ctrl+I`退出。如果已经选择文本，则将当前选择文本改为斜体。
-- `Ctrl+D`
-  插入删除线；再次按`Ctrl+D`退出。如果已经选择文本，则将当前选择文本改为删除线。
-- `Ctrl+;`
-  插入行内代码；再次按`Ctrl+;`退出。如果已经选择文本，则将当前选择文本改为行内代码。
-- `Ctrl+M`
-  插入代码块；再次按`Ctrl+M`退出。如果已经选择文本，则将当前选择文本嵌入到代码块中。
-- `Ctrl+L`
-  插入链接。
-- `Ctrl+'`
-  插入图片。
-- `Ctrl+H`
-  退格键，向前删除一个字符。
-- `Ctrl+W`
-  删除光标位置向后到第一个空白字符之间的所有字符。
-- `Ctrl+U`
-  删除光标位置到行首的所有字符。
-- `Ctrl+<Num>`
-  插入级别为`<Num>`的标题。`<Num>`应该是1到6的一个数字。如果已经选择文本，则将当前选择文本改为标题。
-- `Ctrl+7`
-  删除当前行或所选择文本的标题标记。
-- `Tab`/`Shift+Tab`
-  增加或减小缩进。如果已经选择文本，则对所有选择的行进行缩进操作。
-- `Shift+Enter`
-  插入两个空格然后换行，在Markdown中类似于软换行的概念。
-- `Shift+Left`, `Shift+Right`, `Shift+Up`, `Shift+Down`
-  扩展选定左右一个字符，或上下一行。
-- `Ctrl+Shift+Left`, `Ctrl+Shift+Right`
-  扩展选定到单词开始或结尾。
-- `Ctrl+Shift+Up`, `Ctrl+Sfhit+Down`
-  扩展选定到段尾或段首。
-- `Shift+Home`, `Shift+End`
-  扩展选定到行首和行尾。
-- `Ctrl+Shift+Home`, `Ctrl+Shift+End`
-  扩展选定到笔记开始或结尾处。
 
 
 
 
-
-## 二、Vim Keyboard Shortcuts
+## 一、Vim Keyboard Shortcuts
 
 **改键盘映射**
 
 通过在 KE中导入设置，将 CapsLock 映射为 Ctrl 和 Esc，点按为 Esc，按住为 Ctrl。
 
-打开 terminal，输入`vimtutor`继续学习，目前刚好完成了 1.3
+打开 terminal，输入`vimtutor`继续学习，目前完成了 4.1
 
 
-
-### 1、Navigating the page
-
-1. **j**Scroll down
-2. **k**Scroll up
-3. **gg**Scroll to the top of the page
-4. **G**Scroll to the bottom of the page
-5. **d**Scroll a half page down
-6. **u**Scroll a half page up
-7. **h**Scroll left
-8. **l**Scroll right
-9. **r**Reload the page
-10. **yy**Copy the current URL to the clipboard
-11. **p**Open the clipboard's URL in the current tab
-12. **P**Open the clipboard's URL in a new tab
-13. **i**Enter insert mode
-14. **v**Enter visual mode
-15. **gi**Focus the first text input on the page
-16. **f**Open a link in the current tab
-17. **F**Open a link in a new tab
-18. **gf**Select the next frame on the page
-19. **gF**Select the page's main/top frame
 
 ### 2、Text Editing
 
@@ -277,7 +89,7 @@ $: move the cursor to the end of the line.
 
 #### dd + P：剪切当前行再粘贴
 当要把某几行 line 调换位置的时候
-先把当前一行（dd）或者多行文字剪切（d+ n + d），然后移动到要放置的位的上一行，再点击 `P`（其实是 paste），就把之前貌似删除的行数移动到了新位置。
+先把当前一行（dd）或者多行文字剪切（d+ n + d），然后移动到要放置的行数的上一行，再点击 `P`（其实是 paste），就把之前貌似删除的行数移动到了新位置。
 
 #### replace command
 先要以 normal mode，移动到对应的字符下方。记住之前 x 是删除当前光标下字符。而
@@ -295,40 +107,111 @@ $: move the cursor to the end of the line.
 
 ### 4、location and file status
 
+`gg`: to the beginning of the text.
 
-### 3、Using find
+`G`: to the end of the text.
 
-1. **/**Enter find mode
-2. **n**Cycle forward to the next find match
-3. **N**Cycle backward to the previous find match
+`Ctrl+G`: indicates your current line and file status.
 
-### 4、Using the vomnibar
+`integer + G`：return to the specific line.
 
-1. **o**Open URL, bookmark or history entry
-2. **O**Open URL, bookmark or history entry in a new tab
-3. **b**Open a bookmark
-4. **B**Open a bookmark in a new tab
-5. **T**Search through your open tabs
 
-### Navigating history
 
-1. **H**Go back in history
-2. **L**Go forward in history
 
-### Manipulating tabs
+### 5、Using find
 
-1. **t**Create new tab
-2. **J**Go one tab left
-3. **K**Go one tab right
-4. **g0**Go to the first tab
-5. **g$**Go to the last tab
-6. **yt**Duplicate current tab
-7. **x**Close current tab
-8. **X**Restore closed tab
+(1)in Normal Mode, **/**Enter find mode
 
-### Miscellaneous
+to search the same text again, type **n ** forward to the next find match，相当于在 word 中用上下键头来找同一匹配。
 
-1. **?**Show help
+type **N** to search backward to the previous find match
+
+
+
+
+
+## 二、各软件中使用类似 VIM 的体验
+
+### 1、**Jupyterlab Desktop** 
+
+内置了 Enable VIM mode，见`Settings- Enable Vim Mode`
+
+<img src="./assets/image-20241109184331325.png" alt="image-20241109184331325" style="zoom:33%;" />
+
+
+
+### 2、在微软 Word 中用 VIM:
+
+我自己写了插件，可以参考我的文章：https://jackcheng.chat/2024/11/03/vim-word-experience/
+
+
+
+### 3、Chrome 中使用 VIM
+
+https://vimium.github.io/ 用这个插件。
+
+Modifier keys are specified as <c-x>, <m-x>, <a-x> for ctrl+x, meta+x, and alt+x respectively.
+
+Navigating the current page:
+
+    ?       show the help dialog for a list of all available keys
+    h       scroll left
+    j       scroll down
+    k       scroll up
+    l       scroll right
+    gg      scroll to top of the page
+    G       scroll to bottom of the page
+    d       scroll down half a page
+    u       scroll up half a page
+    f       open a link in the current tab
+    F       open a link in a new tab
+    r       reload
+    gs      view source
+    i       enter insert mode -- all commands will be ignored until you hit esc to exit
+    yy      copy the current url to the clipboard
+    yf      copy a link url to the clipboard
+    gf      cycle forward to the next frame
+
+Navigating to new pages:
+
+    o       Open URL, bookmark, or history entry
+    O       Open URL, bookmark, history entry in a new tab
+    b       Open bookmark
+    B       Open bookmark in a new tab
+
+Using find:
+
+    /       enter find mode -- type your search query and hit enter to search or esc to cancel
+    n       cycle forward to the next find match
+    N       cycle backward to the previous find match
+
+Navigating your history:
+
+    H       go back in history
+    L       go forward in history
+
+Manipulating tabs:
+
+    J, gT      go one tab left
+    K, gt      go one tab right
+    g0         go to the first tab
+    g$         go to the last tab
+    t          create tab
+    x          close current tab
+    X          restore closed tab (i.e. unwind the 'x' command)
+    T          search through your open tabs
+
+Additional advanced browsing commands:
+
+    ]]      Follow the link labeled 'next' or '>'. Helpful for browsing paginated sites.
+    [[      Follow the link labeled 'previous' or '<'. Helpful for browsing paginated sites.
+    <a-f>   open multiple links in a new tab
+    gi      focus the first (or n-th) text input box on the page
+    gu      go up one level in the URL hierarchy
+
+Vimium supports command repetition so, for example, hitting '5t' will open 5 tabs in rapid succession. ESC (or <c-[>) will clear any partial commands in the queue and will also exit insert and find modes.
+
+
 
 
 

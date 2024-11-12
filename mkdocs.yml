@@ -19,7 +19,18 @@ nav:
     - CS/index.md
     - ChatGPT: CS/Chatgpt/ChatGPT_Cookbook.md    
     - Excel: CS/Excel/Excel-Cheatsheet.md
-    - Python: CS/Python/Python-Notes-202410.md 
+    - Python: 
+      - Python笔记: CS/Python/Python-Notes-202410.md
+      - CS50P-Lecture0-Introduction: CS/Python/Lecture0-introduction.md 
+      - CS50P-Lecture1-Conditionals: CS/Python/Lecture1-Conditionals.md
+      - CS50P-Lecture2-Loops: CS/Python/lecture2-Loops.md
+      - CS50P-Lecture3-Exceptions: CS/Python/Lecture3-Exceptions.md
+      - CS50P-Lecture4-Libraries: CS/Python/Lecture4-Libraries.md
+      - CS50P-Lecture5-Unittest: CS/Python/Lecture5-Unittest.md
+      - CS50P-Lecture6-File-IO: CS/Python/lecture6-file-io.md
+      - CS50P-Lecture7-ReGex: CS/Python/lecture7-regular-expressions.md
+      - CS50P-Lecture8-OoP: CS/Python/lecture8-Object-oriented-programming.md 
+      - CS50P-Lecture9-et-cetera: CS/Python/lecture9-et-cetera.md 
     - Regex: 
       - Regex-Buddy教程: CS/Regex/RegexBuddy-tutorial.md
       - 正则表达式: CS/Regex/regex-cheatsheet-examples.md

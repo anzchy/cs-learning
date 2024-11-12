@@ -132,3 +132,8 @@ dmypy.json
 .pyre/
 docs/CS/Python/.DS_Store
 .DS_Store
+.DS_Store
+archive/.DS_Store
+docs/.DS_Store
+docs/CS/.DS_Store
+docs/CS/Python/.DS_Store
