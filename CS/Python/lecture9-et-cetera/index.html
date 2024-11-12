@@ -1,0 +1,3406 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Jack Cheng的个人网站">
+      
+      
+        <meta name="author" content="Jack Cheng">
+      
+      
+        <link rel="canonical" href="https://learning.jackcheng.chat/CS/Python/lecture9-et-cetera/">
+      
+      
+        <link rel="prev" href="../lecture8-Object-oriented-programming/">
+      
+      
+        <link rel="next" href="../../Regex/RegexBuddy-tutorial/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>CS50P-Lecture9-et-cetera - JackCheng的CS 学习网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-9" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="JackCheng的CS 学习网站" class="md-header__button md-logo" aria-label="JackCheng的CS 学习网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JackCheng的CS 学习网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CS50P-Lecture9-et-cetera
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/anzchy/learning.jackcheng.chat" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    learning.jackcheng.chat
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ME/" class="md-tabs__link">
+          
+  
+    
+  
+  我
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  CS笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Family-Education/" class="md-tabs__link">
+          
+  
+    
+  
+  家庭建设
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Writing/" class="md-tabs__link">
+          
+  
+    
+  
+  写作
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Reproduce/" class="md-tabs__link">
+          
+  
+    
+  
+  转载
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../WEBSITE/" class="md-tabs__link">
+          
+  
+    
+  
+  网站
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="JackCheng的CS 学习网站" class="md-nav__button md-logo" aria-label="JackCheng的CS 学习网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    JackCheng的CS 学习网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/anzchy/learning.jackcheng.chat" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    learning.jackcheng.chat
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ME/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    我
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            我
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    个人介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    个人联系方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    个人公众账号
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/ability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    个人能力
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/business-trip-necessities/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    出差必备物品
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    打赏支持
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CS笔记
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Chatgpt/ChatGPT_Cookbook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChatGPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Excel/Excel-Cheatsheet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Excel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python-Notes-202410/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture0-introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture0-Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1-Conditionals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture1-Conditionals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture2-Loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture2-Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-Exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture3-Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4-Libraries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture4-Libraries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5-Unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture5-Unittest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture6-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture6-File-IO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture7-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture7-ReGex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture8-Object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture8-OoP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture9-et-cetera
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture9-et-cetera
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 9
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#et-cetera" class="md-nav__link">
+    <span class="md-ellipsis">
+      Et Cetera
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    <span class="md-ellipsis">
+      set
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type Hints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docstrings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docstrings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      argparse
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unpacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unpacking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#args-and-kwargs" class="md-nav__link">
+    <span class="md-ellipsis">
+      args and kwargs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      map
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Comprehensions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      filter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dictionary-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionary Comprehensions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      enumerate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generators-and-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generators and Iterators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Congratulations!
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-was-cs50" class="md-nav__link">
+    <span class="md-ellipsis">
+      This was CS50!
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Regex
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Regex
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regex/RegexBuddy-tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regex-Buddy教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regex/regex-cheatsheet-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    正则表达式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Shell%20/Shell_command_cookbook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Vim/vim-cheatsheet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Family-Education/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    家庭建设
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            家庭建设
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Family-Education/must-do-list-for-parents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    子女成长各阶段家长必做
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    英语
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            英语
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Family-Education/English/reading-list-for-each-stage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    孩子各阶段书单
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Family-Education/English/pronunciation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    英语发音
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Writing/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    写作
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            写作
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Reproduce/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    转载
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            转载
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../WEBSITE/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    网站
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            网站
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网站构建说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文章编写帮助
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    测试文档
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 9
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#et-cetera" class="md-nav__link">
+    <span class="md-ellipsis">
+      Et Cetera
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    <span class="md-ellipsis">
+      set
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type Hints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docstrings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docstrings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      argparse
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unpacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unpacking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#args-and-kwargs" class="md-nav__link">
+    <span class="md-ellipsis">
+      args and kwargs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      map
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Comprehensions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      filter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dictionary-comprehensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionary Comprehensions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      enumerate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generators-and-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generators and Iterators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Congratulations!
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-was-cs50" class="md-nav__link">
+    <span class="md-ellipsis">
+      This was CS50!
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/anzchy/learning.jackcheng.chat/edit/main/docs/CS/Python/lecture9-et-cetera.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>CS50P-Lecture9-et-cetera</h1>
+
+<h2 id="lecture-9">Lecture 9<a class="headerlink" href="#lecture-9" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#et-cetera">Et Cetera</a></li>
+<li><a href="#set"><code>set</code></a></li>
+<li><a href="#global-variables">Global Variables</a></li>
+<li><a href="#constants">Constants</a></li>
+<li><a href="#type-hints">Type Hints</a></li>
+<li><a href="#docstrings">Docstrings</a></li>
+<li><a href="#argparse"><code>argparse</code></a></li>
+<li><a href="#unpacking">Unpacking</a></li>
+<li><a href="#args-and-kwargs"><code>args</code> and <code>kwargs</code></a></li>
+<li><a href="#map"><code>map</code></a></li>
+<li><a href="#list-comprehensions">List Comprehensions</a></li>
+<li><a href="#filter"><code>filter</code></a></li>
+<li><a href="#dictionary-comprehensions">Dictionary Comprehensions</a></li>
+<li><a href="#enumerate"><code>enumerate</code></a></li>
+<li><a href="#generators-and-iterators">Generators and Iterators</a></li>
+<li><a href="#congratulations">Congratulations!</a></li>
+<li><a href="#this-was-cs50">This was CS50!</a></li>
+</ul>
+<h2 id="et-cetera">Et Cetera<a class="headerlink" href="#et-cetera" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Over the many past lessons, we have covered so much related to Python!</li>
+<li>In this lesson, we will be focusing upon many of the “et cetera” items not previously discussed. “Et cetera” literally means “and the rest”!</li>
+<li>Indeed, if you look at the Python documentation, you will find quite “the rest” of other features.</li>
+</ul>
+<h2 id="set"><code>set</code><a class="headerlink" href="#set" title="Permanent link">&para;</a></h2>
+<ul>
+<li>In math, a set would be considered a set of numbers without any duplicates.</li>
+<li>
+<p>In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">students = [
+</span><span id="__span-0-2">    {&quot;name&quot;: &quot;Hermione&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-0-3">    {&quot;name&quot;: &quot;Harry&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-0-4">    {&quot;name&quot;: &quot;Ron&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-0-5">    {&quot;name&quot;: &quot;Draco&quot;, &quot;house&quot;: &quot;Slytherin&quot;},
+</span><span id="__span-0-6">    {&quot;name&quot;: &quot;Padma&quot;, &quot;house&quot;: &quot;Ravenclaw&quot;},
+</span><span id="__span-0-7">]
+</span><span id="__span-0-8">
+</span><span id="__span-0-9">houses = []
+</span><span id="__span-0-10">for student in students:
+</span><span id="__span-0-11">    if student[&quot;house&quot;] not in houses:
+</span><span id="__span-0-12">        houses.append(student[&quot;house&quot;])
+</span><span id="__span-0-13">
+</span><span id="__span-0-14">for house in sorted(houses):
+</span><span id="__span-0-15">    print(house)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how we have a list of dictionaries, each being a student. An empty list called <code>houses</code> is created. We iterate through each <code>student</code> in <code>students</code>. If a student’s <code>house</code> is not in <code>houses</code>, we append to our list of <code>houses</code>.</p>
+</li>
+<li>
+<p>It turns out we can use the built-in <code>set</code> features to eliminate duplicates.</p>
+</li>
+<li>
+<p>In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1">students = [
+</span><span id="__span-1-2">    {&quot;name&quot;: &quot;Hermione&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-1-3">    {&quot;name&quot;: &quot;Harry&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-1-4">    {&quot;name&quot;: &quot;Ron&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-1-5">    {&quot;name&quot;: &quot;Draco&quot;, &quot;house&quot;: &quot;Slytherin&quot;},
+</span><span id="__span-1-6">    {&quot;name&quot;: &quot;Padma&quot;, &quot;house&quot;: &quot;Ravenclaw&quot;},
+</span><span id="__span-1-7">]
+</span><span id="__span-1-8">
+</span><span id="__span-1-9">houses = set()
+</span><span id="__span-1-10">for student in students:
+</span><span id="__span-1-11">    houses.add(student[&quot;house&quot;])
+</span><span id="__span-1-12">
+</span><span id="__span-1-13">for house in sorted(houses):
+</span><span id="__span-1-14">    print(house)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how no checking needs to be included to ensure there are no duplicates. The <code>set</code> object takes care of this for us automatically.</p>
+</li>
+<li>
+<p>You can learn more in Python’s documentation of <a href="https://docs.python.org/3/library/stdtypes.html#set"><code>set</code></a>.</p>
+</li>
+</ul>
+<h2 id="global-variables">Global Variables<a class="headerlink" href="#global-variables" title="Permanent link">&para;</a></h2>
+<ul>
+<li>In other programming languages, there is the notion of global variables that are accessible to any function.</li>
+<li>
+<p>We can leverage this ability within Python. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">balance = 0
+</span><span id="__span-2-2">
+</span><span id="__span-2-3">
+</span><span id="__span-2-4">def main():
+</span><span id="__span-2-5">    print(&quot;Balance:&quot;, balance)
+</span><span id="__span-2-6">
+</span><span id="__span-2-7">
+</span><span id="__span-2-8">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-2-9">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how we create a global variable called <code>balance</code>, outside of any function.</p>
+</li>
+<li>
+<p>Since no errors are presented by executing the code above, you’d think all is well. However, it is not! In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">balance = 0
+</span><span id="__span-3-2">
+</span><span id="__span-3-3">
+</span><span id="__span-3-4">def main():
+</span><span id="__span-3-5">    print(&quot;Balance:&quot;, balance)
+</span><span id="__span-3-6">    deposit(100)
+</span><span id="__span-3-7">    withdraw(50)
+</span><span id="__span-3-8">    print(&quot;Balance:&quot;, balance)
+</span><span id="__span-3-9">
+</span><span id="__span-3-10">
+</span><span id="__span-3-11">def deposit(n):
+</span><span id="__span-3-12">    balance += n
+</span><span id="__span-3-13">
+</span><span id="__span-3-14">
+</span><span id="__span-3-15">def withdraw(n):
+</span><span id="__span-3-16">    balance -= n
+</span><span id="__span-3-17">
+</span><span id="__span-3-18">
+</span><span id="__span-3-19">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-3-20">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how we now add the functionality to add and withdraw funds to and from <code>balance</code>. However, executing this code, we are presented with an error! We see an error called <code>UnboundLocalError</code>. You might be able to guess that, at least in the way we’ve currently coded <code>balance</code> and our <code>deposit</code> and <code>withdraw</code> functions, we can’t reassign it a value value inside a function.</p>
+</li>
+<li>
+<p>To interact with a global variable inside a function, the solution is to use the <code>global</code> keyword. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1">balance = 0
+</span><span id="__span-4-2">
+</span><span id="__span-4-3">
+</span><span id="__span-4-4">def main():
+</span><span id="__span-4-5">    print(&quot;Balance:&quot;, balance)
+</span><span id="__span-4-6">    deposit(100)
+</span><span id="__span-4-7">    withdraw(50)
+</span><span id="__span-4-8">    print(&quot;Balance:&quot;, balance)
+</span><span id="__span-4-9">
+</span><span id="__span-4-10">
+</span><span id="__span-4-11">def deposit(n):
+</span><span id="__span-4-12">    global balance
+</span><span id="__span-4-13">    balance += n
+</span><span id="__span-4-14">
+</span><span id="__span-4-15">
+</span><span id="__span-4-16">def withdraw(n):
+</span><span id="__span-4-17">    global balance
+</span><span id="__span-4-18">    balance -= n
+</span><span id="__span-4-19">
+</span><span id="__span-4-20">
+</span><span id="__span-4-21">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-4-22">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the <code>global</code> keyword tells each function that <code>balance</code> does not refer to a local variable: instead, it refers to the global variable we originally placed at the top of our code. Now, our code functions!</p>
+</li>
+<li>
+<p>Utilizing our powers from our experience with object-oriented programming, we can modify our code to use a class instead of a global variable. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1">class Account:
+</span><span id="__span-5-2">    def __init__(self):
+</span><span id="__span-5-3">        self._balance = 0
+</span><span id="__span-5-4">
+</span><span id="__span-5-5">    @property
+</span><span id="__span-5-6">    def balance(self):
+</span><span id="__span-5-7">        return self._balance
+</span><span id="__span-5-8">
+</span><span id="__span-5-9">    def deposit(self, n):
+</span><span id="__span-5-10">        self._balance += n
+</span><span id="__span-5-11">
+</span><span id="__span-5-12">    def withdraw(self, n):
+</span><span id="__span-5-13">        self._balance -= n
+</span><span id="__span-5-14">
+</span><span id="__span-5-15">
+</span><span id="__span-5-16">def main():
+</span><span id="__span-5-17">    account = Account()
+</span><span id="__span-5-18">    print(&quot;Balance:&quot;, account.balance)
+</span><span id="__span-5-19">    account.deposit(100)
+</span><span id="__span-5-20">    account.withdraw(50)
+</span><span id="__span-5-21">    print(&quot;Balance:&quot;, account.balance)
+</span><span id="__span-5-22">
+</span><span id="__span-5-23">
+</span><span id="__span-5-24">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-5-25">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how we use <code>account = Account()</code> to create an account. Classes allow us to solve this issue of needing a global variable more cleanly because these instance variables are accessible to all the methods of this class utilizing <code>self</code>.</p>
+</li>
+<li>
+<p>Generally speaking, global variables should be used quite sparingly, if at all!</p>
+</li>
+</ul>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Some languages allow you to create variables that are unchangeable, called “constants”. Constants allow one to program defensively and reduce the opportunities for important values to be altered.</li>
+<li>
+<p>In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1">MEOWS = 3
+</span><span id="__span-6-2">
+</span><span id="__span-6-3">for _ in range(MEOWS):
+</span><span id="__span-6-4">    print(&quot;meow&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice <code>MEOWS</code> is our constant in this case. Constants are typically denoted by capital variable names and are placed at the top of our code. Though this <em>looks</em> like a constant, in reality, Python actually has no mechanism to prevent us from changing that value within our code! Instead, you’re on the honor system: if a variable name is written in all caps, just don’t change it!</p>
+</li>
+<li>
+<p>One can create a class “constant”, now in quotes because we know Python doesn’t quite support “constants”. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1">class Cat:
+</span><span id="__span-7-2">    MEOWS = 3
+</span><span id="__span-7-3">
+</span><span id="__span-7-4">    def meow(self):
+</span><span id="__span-7-5">        for _ in range(Cat.MEOWS):
+</span><span id="__span-7-6">            print(&quot;meow&quot;)
+</span><span id="__span-7-7">
+</span><span id="__span-7-8">
+</span><span id="__span-7-9">cat = Cat()
+</span><span id="__span-7-10">cat.meow()
+</span></code></pre></div></td></tr></table></div>
+<p>Because <code>MEOWS</code> is defined outside of any particular class method, all of them have access to that value via <code>Cat.MEOWS</code>.</p>
+</li>
+</ul>
+<h2 id="type-hints">Type Hints<a class="headerlink" href="#type-hints" title="Permanent link">&para;</a></h2>
+<ul>
+<li>In other programming languages, one expresses explicitly what variable type you want to use.</li>
+<li>As we saw earlier in the course, Python does not require the explicit declaration of types.</li>
+<li>Nevertheless, it’s good practice need to ensure all of your variables are of the right type.</li>
+<li><code>mypy</code> is a program that can help you test to make sure all your variables are of the right type.</li>
+<li>You can install <code>mypy</code> by executing in your terminal window: <code>pip install mypy</code>.</li>
+</ul>
+<p>In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1">  def meow(n):
+</span><span id="__span-8-2">      for _ in range(n):
+</span><span id="__span-8-3">          print(&quot;meow&quot;)
+</span><span id="__span-8-4">
+</span><span id="__span-8-5">
+</span><span id="__span-8-6">  number = input(&quot;Number: &quot;)
+</span><span id="__span-8-7">  meow(number)
+</span></code></pre></div></td></tr></table></div>
+<p>You may already see that <code>number = input("Number: )"</code> returns a <code>string</code>, not an <code>int</code>. But <code>meow</code> will likely want an <code>int</code>!</p>
+<ul>
+<li>
+<p>A type hint can be added to give Python a hint of what type of variable <code>meow</code> should expect. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1">def meow(n: int):
+</span><span id="__span-9-2">    for _ in range(n):
+</span><span id="__span-9-3">        print(&quot;meow&quot;)
+</span><span id="__span-9-4">
+</span><span id="__span-9-5">
+</span><span id="__span-9-6">number = input(&quot;Number: &quot;)
+</span><span id="__span-9-7">meow(number)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice, though, that our program still throws an error.</p>
+</li>
+<li>
+<p>After installing <code>mypy</code>, execute <code>mypy meows.py</code> in the terminal window. <code>mypy</code> will provide some guidance about how to fix this error.</p>
+</li>
+<li>
+<p>You can annotate all your variables. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1">def meow(n: int):
+</span><span id="__span-10-2">    for _ in range(n):
+</span><span id="__span-10-3">        print(&quot;meow&quot;)
+</span><span id="__span-10-4">
+</span><span id="__span-10-5">
+</span><span id="__span-10-6">number: int = input(&quot;Number: &quot;)
+</span><span id="__span-10-7">meow(number)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how <code>number</code> is now provided a type hint.</p>
+</li>
+<li>
+<p>Again, executing <code>mypy meows.py</code> in the terminal window provides much more specific feedback to you, the programmer.</p>
+</li>
+<li>
+<p>We can fix our final error by coding as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1">def meow(n: int):
+</span><span id="__span-11-2">    for _ in range(n):
+</span><span id="__span-11-3">        print(&quot;meow&quot;)
+</span><span id="__span-11-4">
+</span><span id="__span-11-5">
+</span><span id="__span-11-6">number: int = int(input(&quot;Number: &quot;))
+</span><span id="__span-11-7">meow(number)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how running <code>mypy</code> how produces no errors because cast our input as an integer.</p>
+</li>
+<li>
+<p>Let’s introduce a new error by assuming that <code>meow</code> will return to us a string, or <code>str</code>. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1">def meow(n: int):
+</span><span id="__span-12-2">    for _ in range(n):
+</span><span id="__span-12-3">        print(&quot;meow&quot;)
+</span><span id="__span-12-4">
+</span><span id="__span-12-5">
+</span><span id="__span-12-6">number: int = int(input(&quot;Number: &quot;))
+</span><span id="__span-12-7">meows: str = meow(number)
+</span><span id="__span-12-8">print(meows)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the <code>meow</code> function has only a side effect. Because we only attempt to print “meow”, not return a value, an error is thrown when we try to store the return value of <code>meow</code> in <code>meows</code>.</p>
+</li>
+<li>
+<p>We can further use type hints to check for errors, this time annotating the return values of functions. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1">def meow(n: int) -&gt; None:
+</span><span id="__span-13-2">    for _ in range(n):
+</span><span id="__span-13-3">        print(&quot;meow&quot;)
+</span><span id="__span-13-4">
+</span><span id="__span-13-5">
+</span><span id="__span-13-6">number: int = int(input(&quot;Number: &quot;))
+</span><span id="__span-13-7">meows: str = meow(number)
+</span><span id="__span-13-8">print(meows)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the notation <code>-&gt; None</code> tells <code>mypy</code> that there is no return value.</p>
+</li>
+<li>
+<p>We can modify our code to return a string if we wish:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1">def meow(n: int) -&gt; str:
+</span><span id="__span-14-2">    return &quot;meow\n&quot; * n
+</span><span id="__span-14-3">
+</span><span id="__span-14-4">
+</span><span id="__span-14-5">number: int = int(input(&quot;Number: &quot;))
+</span><span id="__span-14-6">meows: str = meow(number)
+</span><span id="__span-14-7">print(meows, end=&quot;&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how we store in <code>meows</code> multiple <code>str</code>s. Running <code>mypy</code> produces no errors.</p>
+</li>
+<li>
+<p>You can learn more in Python’s documentation of <a href="https://docs.python.org/3/library/typing.html">Type Hints</a>.</p>
+</li>
+<li>You can learn more about <a href="https://mypy.readthedocs.io/"><code>mypy</code></a> through the program’s own documentation.</li>
+</ul>
+<h2 id="docstrings">Docstrings<a class="headerlink" href="#docstrings" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>A standard way of commenting your function’s purpose is to use a docstring. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1">def meow(n):
+</span><span id="__span-15-2">    &quot;&quot;&quot;Meow n times.&quot;&quot;&quot;
+</span><span id="__span-15-3">    return &quot;meow\n&quot; * n
+</span><span id="__span-15-4">
+</span><span id="__span-15-5">
+</span><span id="__span-15-6">number = int(input(&quot;Number: &quot;))
+</span><span id="__span-15-7">meows = meow(number)
+</span><span id="__span-15-8">print(meows, end=&quot;&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the three double quotes designate what the function does.</p>
+</li>
+<li>
+<p>You can use docstrings to standardize how you document the features of a function. In the text editor window, code as follows: s</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1">def meow(n):
+</span><span id="__span-16-2">    &quot;&quot;&quot;
+</span><span id="__span-16-3">    Meow n times.
+</span><span id="__span-16-4">
+</span><span id="__span-16-5">    :param n: Number of times to meow
+</span><span id="__span-16-6">    :type n: int
+</span><span id="__span-16-7">    :raise TypeError: If n is not an int
+</span><span id="__span-16-8">    :return: A string of n meows, one per line
+</span><span id="__span-16-9">    :rtype: str
+</span><span id="__span-16-10">    &quot;&quot;&quot;
+</span><span id="__span-16-11">    return &quot;meow\n&quot; * n
+</span><span id="__span-16-12">
+</span><span id="__span-16-13">
+</span><span id="__span-16-14">number = int(input(&quot;Number: &quot;))
+</span><span id="__span-16-15">meows = meow(number)
+</span><span id="__span-16-16">print(meows, end=&quot;&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how multiple docstring arguments are included. For example, it describes the parameters taken by the function and what is returned by the function.</p>
+</li>
+<li>
+<p>Established tools, such as <a href="https://www.sphinx-doc.org/en/master/index.html">Sphinx</a>, can be used to parse docstrings and automatically create documentation for us in the form of web pages and PDF files such that you can publish and share with others.</p>
+</li>
+<li>You can learn more in Python’s documentation of <a href="https://peps.python.org/pep-0257/">docstrings</a>.</li>
+</ul>
+<h2 id="argparse"><code>argparse</code><a class="headerlink" href="#argparse" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Suppose we want to use command-line arguments in our program. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1">import sys
+</span><span id="__span-17-2">
+</span><span id="__span-17-3">if len(sys.argv) == 1:
+</span><span id="__span-17-4">    print(&quot;meow&quot;)
+</span><span id="__span-17-5">elif len(sys.argv) == 3 and sys.argv[1] == &quot;-n&quot;:
+</span><span id="__span-17-6">    n = int(sys.argv[2])
+</span><span id="__span-17-7">    for _ in range(n):
+</span><span id="__span-17-8">        print(&quot;meow&quot;)
+</span><span id="__span-17-9">else:
+</span><span id="__span-17-10">    print(&quot;usage: meows.py [-n NUMBER]&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how <code>sys</code> is imported, from which we get access to <code>sys.argv</code>—an array of command-line arguments given to our program when run. We can use several <code>if</code> statements to check whether the use has run our program properly.</p>
+</li>
+<li>
+<p>Let’s assume that this program will be getting much more complicated. How could we check all the arguments that could be inserted by the user? We might give up if we have more than a few command-line arguments!</p>
+</li>
+<li>
+<p>Luckily, <code>argparse</code> is a library that handles all the parsing of complicated strings of command-line arguments. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1">import argparse
+</span><span id="__span-18-2">
+</span><span id="__span-18-3">parser = argparse.ArgumentParser()
+</span><span id="__span-18-4">parser.add_argument(&quot;-n&quot;)
+</span><span id="__span-18-5">args = parser.parse_args()
+</span><span id="__span-18-6">
+</span><span id="__span-18-7">for _ in range(int(args.n)):
+</span><span id="__span-18-8">    print(&quot;meow&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how <code>argparse</code> is imported instead of <code>sys</code>. An object called <code>parser</code> is created from an <code>ArgumentParser</code> class. That class’s <code>add_argument</code> method is used to tell <code>argparse</code> what arguments we should expect from the user when they run our program. Finally, running the parser’s <code>parse_args</code> method ensures that all of the arguments have been included properly by the user.</p>
+</li>
+<li>
+<p>We can also program more cleanly, such that our user can get some information about the proper usage of our code when they fail to use the program correctly. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1">import argparse
+</span><span id="__span-19-2">
+</span><span id="__span-19-3">parser = argparse.ArgumentParser(description=&quot;Meow like a cat&quot;)
+</span><span id="__span-19-4">parser.add_argument(&quot;-n&quot;, help=&quot;number of times to meow&quot;)
+</span><span id="__span-19-5">args = parser.parse_args()
+</span><span id="__span-19-6">
+</span><span id="__span-19-7">for _ in range(int(args.n)):
+</span><span id="__span-19-8">    print(&quot;meow&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the user is provided some documentation. Specifically, a <code>help</code> argument is provided. Now, if the user executes <code>python meows.py --help</code> or <code>-h</code>, the user will be presented with some clues about how to use this program.</p>
+</li>
+<li>
+<p>We can further improve this program. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1">import argparse
+</span><span id="__span-20-2">
+</span><span id="__span-20-3">parser = argparse.ArgumentParser(description=&quot;Meow like a cat&quot;)
+</span><span id="__span-20-4">parser.add_argument(&quot;-n&quot;, default=1, help=&quot;number of times to meow&quot;, type=int)
+</span><span id="__span-20-5">args = parser.parse_args()
+</span><span id="__span-20-6">
+</span><span id="__span-20-7">for _ in range(args.n):
+</span><span id="__span-20-8">    print(&quot;meow&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how not only is help documentation included, but you can provide a <code>default</code> value when no arguments are provided by the user.</p>
+</li>
+<li>
+<p>You can learn more in Python’s documentation of <a href="https://docs.python.org/3/library/argparse.html"><code>argparse</code></a>.</p>
+</li>
+</ul>
+<h2 id="unpacking">Unpacking<a class="headerlink" href="#unpacking" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Would it not be nice to be able to split a single variable into two variables? In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1">first, _ = input(&quot;What&#39;s your name? &quot;).split(&quot; &quot;)
+</span><span id="__span-21-2">print(f&quot;hello, {first}&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how this program tries to get a user’s first name by naively splitting on a single space.</p>
+</li>
+<li>
+<p>It turns out there are other ways to unpack variables. You can write more powerful and elegant code by understanding how to unpack variables in seemingly more advanced ways. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1">def total(galleons, sickles, knuts):
+</span><span id="__span-22-2">    return (galleons * 17 + sickles) * 29 + knuts
+</span><span id="__span-22-3">
+</span><span id="__span-22-4">
+</span><span id="__span-22-5">print(total(100, 50, 25), &quot;Knuts&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how this returns the total value of Knuts.</p>
+</li>
+<li>
+<p>What if we wanted to store our coins in a list? In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1">def total(galleons, sickles, knuts):
+</span><span id="__span-23-2">    return (galleons * 17 + sickles) * 29 + knuts
+</span><span id="__span-23-3">
+</span><span id="__span-23-4">
+</span><span id="__span-23-5">coins = [100, 50, 25]
+</span><span id="__span-23-6">
+</span><span id="__span-23-7">print(total(coins[0], coins[1], coins[2]), &quot;Knuts&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how a list called <code>coins</code> is created. We can pass each value in by indexing using <code>0</code>, <code>1</code>, and so on.</p>
+</li>
+<li>
+<p>This is getting quite verbose. Wouldn’t it be nice if we could simply pass the list of coins to our function?</p>
+</li>
+<li>
+<p>To enable the possibility of passing the entire list, we can use unpacking. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1">def total(galleons, sickles, knuts):
+</span><span id="__span-24-2">    return (galleons * 17 + sickles) * 29 + knuts
+</span><span id="__span-24-3">
+</span><span id="__span-24-4">
+</span><span id="__span-24-5">coins = [100, 50, 25]
+</span><span id="__span-24-6">
+</span><span id="__span-24-7">print(total(*coins), &quot;Knuts&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how a <code>*</code> unpacks the sequence of the list of coins and passes in each of its individual elements to <code>total</code>.</p>
+</li>
+<li>
+<p>Suppose that we could pass in the names of the currency in any order? In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1">def total(galleons, sickles, knuts):
+</span><span id="__span-25-2">    return (galleons * 17 + sickles) * 29 + knuts
+</span><span id="__span-25-3">
+</span><span id="__span-25-4">
+</span><span id="__span-25-5">print(total(galleons=100, sickles=50, knuts=25), &quot;Knuts&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how this still calculates correctly.</p>
+</li>
+<li>
+<p>When you start talking about “names” and “values,” dictionaries might start coming to mind! You can implement this as a dictionary. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1">def total(galleons, sickles, knuts):
+</span><span id="__span-26-2">    return (galleons * 17 + sickles) * 29 + knuts
+</span><span id="__span-26-3">
+</span><span id="__span-26-4">
+</span><span id="__span-26-5">coins = {&quot;galleons&quot;: 100, &quot;sickles&quot;: 50, &quot;knuts&quot;: 25}
+</span><span id="__span-26-6">
+</span><span id="__span-26-7">print(total(coins[&quot;galleons&quot;], coins[&quot;sickles&quot;], coins[&quot;knuts&quot;]), &quot;Knuts&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how a dictionary called <code>coins</code> is provided. We can index into it using keys, such as “galleons” or “sickles”.</p>
+</li>
+<li>
+<p>Since the <code>total</code> function expects three arguments, we cannot pass in a dictionary. We can use unpacking to help with this. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1">def total(galleons, sickles, knuts):
+</span><span id="__span-27-2">    return (galleons * 17 + sickles) * 29 + knuts
+</span><span id="__span-27-3">
+</span><span id="__span-27-4">
+</span><span id="__span-27-5">coins = {&quot;galleons&quot;: 100, &quot;sickles&quot;: 50, &quot;knuts&quot;: 25}
+</span><span id="__span-27-6">
+</span><span id="__span-27-7">print(total(**coins), &quot;Knuts&quot;)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how <code>**</code> allows you to unpack a dictionary. When unpacking a dictionary, it provides both the keys and values.</p>
+</li>
+</ul>
+<h2 id="args-and-kwargs"><code>args</code> and <code>kwargs</code><a class="headerlink" href="#args-and-kwargs" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Recall the <code>print</code> documentation we looked at earlier in this course:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1">print(*objects, sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout, flush=False)
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p><code>args</code> are positional arguments, such as those we provide to print like <code>print("Hello", "World")</code>.</p>
+</li>
+<li><code>kwargs</code> are named arguments, or “keyword arguments”, such as those we provide to print like <code>print(end="")</code>.</li>
+<li>
+<p>As we see in the prototype for the <code>print</code> function above, we can tell our function to expect a presently unknown number positional arguments. We can also tell it to expect a presently unknown number of keyword arguments. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1">def f(*args, **kwargs):
+</span><span id="__span-29-2">    print(&quot;Positional:&quot;, args)
+</span><span id="__span-29-3">
+</span><span id="__span-29-4">
+</span><span id="__span-29-5">f(100, 50, 25)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how executing this code will be printed as positional arguments.</p>
+</li>
+<li>
+<p>We can even pass in named arguments. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1">def f(*args, **kwargs):
+</span><span id="__span-30-2">    print(&quot;Named:&quot;, kwargs)
+</span><span id="__span-30-3">
+</span><span id="__span-30-4">
+</span><span id="__span-30-5">f(galleons=100, sickles=50, knuts=25)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the named values are provided in the form of a dictionary.</p>
+</li>
+<li>
+<p>Thinking about the <code>print</code> function above, you can see how <code>*objects</code> takes any number of positional arguments.</p>
+</li>
+<li>You can learn more in Python’s documentation of <a href="https://docs.python.org/3/library/functions.html#print"><code>print</code></a>.</li>
+</ul>
+<h2 id="map"><code>map</code><a class="headerlink" href="#map" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Early on, we began with procedural programming.</li>
+<li>We later revealed Python is an object oriented programming language.</li>
+<li>
+<p>We saw hints of functional programming, where functions have side effects without a return value. We can illustrate this in the text editor window, type <code>code yell.py</code> and code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1">def main():
+</span><span id="__span-31-2">    yell(&quot;This is CS50&quot;)
+</span><span id="__span-31-3">
+</span><span id="__span-31-4">
+</span><span id="__span-31-5">def yell(word):
+</span><span id="__span-31-6">    print(word.upper())
+</span><span id="__span-31-7">
+</span><span id="__span-31-8">
+</span><span id="__span-31-9">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-31-10">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the <code>yell</code> function is simply yelled.</p>
+</li>
+<li>
+<p>Wouldn’t it be nice to yell a list of unlimited words? Modify your code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1">def main():
+</span><span id="__span-32-2">    yell([&quot;This&quot;, &quot;is&quot;, &quot;CS50&quot;])
+</span><span id="__span-32-3">
+</span><span id="__span-32-4">
+</span><span id="__span-32-5">def yell(words):
+</span><span id="__span-32-6">    uppercased = []
+</span><span id="__span-32-7">    for word in words:
+</span><span id="__span-32-8">        uppercased.append(word.upper())
+</span><span id="__span-32-9">    print(*uppercased)
+</span><span id="__span-32-10">
+</span><span id="__span-32-11">
+</span><span id="__span-32-12">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-32-13">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice we accumulate the uppercase words, iterating over each of the words and uppercasing them. The uppercase list is printed utilizing the <code>*</code> to unpack it.</p>
+</li>
+<li>
+<p>Removing the brackets, we can pass the words in as arguments. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1">def main():
+</span><span id="__span-33-2">    yell(&quot;This&quot;, &quot;is&quot;, &quot;CS50&quot;)
+</span><span id="__span-33-3">
+</span><span id="__span-33-4">
+</span><span id="__span-33-5">def yell(*words):
+</span><span id="__span-33-6">    uppercased = []
+</span><span id="__span-33-7">    for word in words:
+</span><span id="__span-33-8">        uppercased.append(word.upper())
+</span><span id="__span-33-9">    print(*uppercased)
+</span><span id="__span-33-10">
+</span><span id="__span-33-11">
+</span><span id="__span-33-12">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-33-13">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how <code>*words</code> allows for many arguments to be taken by the function.</p>
+</li>
+<li>
+<p><code>map</code> allows you to map a function to a sequence of values. In practice, we can code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1">def main():
+</span><span id="__span-34-2">    yell(&quot;This&quot;, &quot;is&quot;, &quot;CS50&quot;)
+</span><span id="__span-34-3">
+</span><span id="__span-34-4">
+</span><span id="__span-34-5">def yell(*words):
+</span><span id="__span-34-6">    uppercased = map(str.upper, words)
+</span><span id="__span-34-7">    print(*uppercased)
+</span><span id="__span-34-8">
+</span><span id="__span-34-9">
+</span><span id="__span-34-10">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-34-11">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how <code>map</code> takes two arguments. First, it takes a function we want applied to every element of a list. Second, it takes that list itself, to which we’ll apply the aforementioned function. Hence, all words in <code>words</code> will be handed to the <code>str.upper</code> function and returned to <code>uppercased</code>.</p>
+</li>
+<li>
+<p>You can learn more in Python’s documentation of <a href="https://docs.python.org/3/library/functions.html#map"><code>map</code></a>.</p>
+</li>
+</ul>
+<h2 id="list-comprehensions">List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>List comprehensions allow you to create a list on the fly in one elegant one-liner.</li>
+<li>
+<p>We can implement this in our code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1">def main():
+</span><span id="__span-35-2">    yell(&quot;This&quot;, &quot;is&quot;, &quot;CS50&quot;)
+</span><span id="__span-35-3">
+</span><span id="__span-35-4">
+</span><span id="__span-35-5">def yell(*words):
+</span><span id="__span-35-6">    uppercased = [arg.upper() for arg in words]
+</span><span id="__span-35-7">    print(*uppercased)
+</span><span id="__span-35-8">
+</span><span id="__span-35-9">
+</span><span id="__span-35-10">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-35-11">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how instead of using <code>map</code>, we write a Python expression within square brackets. For each argument, <code>.upper</code> is applied to it.</p>
+</li>
+<li>
+<p>Taking this concept further, let’s pivot toward another program.</p>
+</li>
+<li>
+<p>In the text editor window, type <code>code gryffindors.py</code> and code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1">students = [
+</span><span id="__span-36-2">    {&quot;name&quot;: &quot;Hermione&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-36-3">    {&quot;name&quot;: &quot;Harry&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-36-4">    {&quot;name&quot;: &quot;Ron&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-36-5">    {&quot;name&quot;: &quot;Draco&quot;, &quot;house&quot;: &quot;Slytherin&quot;},
+</span><span id="__span-36-6">]
+</span><span id="__span-36-7">
+</span><span id="__span-36-8">gryffindors = []
+</span><span id="__span-36-9">for student in students:
+</span><span id="__span-36-10">    if student[&quot;house&quot;] == &quot;Gryffindor&quot;:
+</span><span id="__span-36-11">        gryffindors.append(student[&quot;name&quot;])
+</span><span id="__span-36-12">
+</span><span id="__span-36-13">for gryffindor in sorted(gryffindors):
+</span><span id="__span-36-14">    print(gryffindor)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice we have a conditional while we’re creating our list. <em>If</em> the student’s house is Gryffindor, we append the student to the list of names. Finally, we print all the names.</p>
+</li>
+<li>
+<p>More elegantly, we can simplify this code with a list comprehension as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1">students = [
+</span><span id="__span-37-2">    {&quot;name&quot;: &quot;Hermione&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-37-3">    {&quot;name&quot;: &quot;Harry&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-37-4">    {&quot;name&quot;: &quot;Ron&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-37-5">    {&quot;name&quot;: &quot;Draco&quot;, &quot;house&quot;: &quot;Slytherin&quot;},
+</span><span id="__span-37-6">]
+</span><span id="__span-37-7">
+</span><span id="__span-37-8">gryffindors = [
+</span><span id="__span-37-9">    student[&quot;name&quot;] for student in students if student[&quot;house&quot;] == &quot;Gryffindor&quot;
+</span><span id="__span-37-10">]
+</span><span id="__span-37-11">
+</span><span id="__span-37-12">for gryffindor in sorted(gryffindors):
+</span><span id="__span-37-13">    print(gryffindor)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the list comprehension is on a single line!</p>
+</li>
+</ul>
+<h2 id="filter"><code>filter</code><a class="headerlink" href="#filter" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Using Python’s <code>filter</code> function allows us to return a subset of a sequence for which a certain condition is true.</li>
+<li>
+<p>In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1">students = [
+</span><span id="__span-38-2">    {&quot;name&quot;: &quot;Hermione&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-38-3">    {&quot;name&quot;: &quot;Harry&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-38-4">    {&quot;name&quot;: &quot;Ron&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-38-5">    {&quot;name&quot;: &quot;Draco&quot;, &quot;house&quot;: &quot;Slytherin&quot;},
+</span><span id="__span-38-6">]
+</span><span id="__span-38-7">
+</span><span id="__span-38-8">
+</span><span id="__span-38-9">def is_gryffindor(s):
+</span><span id="__span-38-10">    return s[&quot;house&quot;] == &quot;Gryffindor&quot;
+</span><span id="__span-38-11">
+</span><span id="__span-38-12">
+</span><span id="__span-38-13">gryffindors = filter(is_gryffindor, students)
+</span><span id="__span-38-14">
+</span><span id="__span-38-15">for gryffindor in sorted(gryffindors, key=lambda s: s[&quot;name&quot;]):
+</span><span id="__span-38-16">    print(gryffindor[&quot;name&quot;])
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how a function called <code>is_gryffindor</code> is created. This is our filtering function that will take a student <code>s</code>, and return <code>True</code> or <code>False</code> depending on whether the student’s house is Gryffindor. You can see the new <code>filter</code> function takes two arguments. First, it takes the function that will be applied to each element in a sequence—in this case, <code>is_gryffindor</code>. Second, it takes the sequence to which it will apply the filtering function—in this case, <code>students</code>. In <code>gryffindors</code>, we should see only those students who are in Gryffindor.</p>
+</li>
+<li>
+<p><code>filter</code> can also use lambda functions as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-1">students = [
+</span><span id="__span-39-2">    {&quot;name&quot;: &quot;Hermione&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-39-3">    {&quot;name&quot;: &quot;Harry&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-39-4">    {&quot;name&quot;: &quot;Ron&quot;, &quot;house&quot;: &quot;Gryffindor&quot;},
+</span><span id="__span-39-5">    {&quot;name&quot;: &quot;Draco&quot;, &quot;house&quot;: &quot;Slytherin&quot;},
+</span><span id="__span-39-6">]
+</span><span id="__span-39-7">
+</span><span id="__span-39-8">
+</span><span id="__span-39-9">gryffindors = filter(lambda s: s[&quot;house&quot;] == &quot;Gryffindor&quot;, students)
+</span><span id="__span-39-10">
+</span><span id="__span-39-11">for gryffindor in sorted(gryffindors, key=lambda s: s[&quot;name&quot;]):
+</span><span id="__span-39-12">    print(gryffindor[&quot;name&quot;])
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the same list of students is provided.</p>
+</li>
+<li>
+<p>You can learn more in Python’s documentation of <a href="https://docs.python.org/3/library/functions.html#filter"><code>filter</code></a>.</p>
+</li>
+</ul>
+<h2 id="dictionary-comprehensions">Dictionary Comprehensions<a class="headerlink" href="#dictionary-comprehensions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>We can apply the same idea behind list comprehensions to dictionaries. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1">students = [&quot;Hermione&quot;, &quot;Harry&quot;, &quot;Ron&quot;]
+</span><span id="__span-40-2">
+</span><span id="__span-40-3">gryffindors = []
+</span><span id="__span-40-4">
+</span><span id="__span-40-5">for student in students:
+</span><span id="__span-40-6">    gryffindors.append({&quot;name&quot;: student, &quot;house&quot;: &quot;Gryffindor&quot;})
+</span><span id="__span-40-7">
+</span><span id="__span-40-8">print(gryffindors)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how this code doesn’t (yet!) use any comprehensions. Instead, it follows the same paradigms we have seen before.</p>
+</li>
+<li>
+<p>We can now apply dictionary comprehensions by modifying our code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-1">students = [&quot;Hermione&quot;, &quot;Harry&quot;, &quot;Ron&quot;]
+</span><span id="__span-41-2">
+</span><span id="__span-41-3">gryffindors = [{&quot;name&quot;: student, &quot;house&quot;: &quot;Gryffindor&quot;} for student in students]
+</span><span id="__span-41-4">
+</span><span id="__span-41-5">print(gryffindors)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how all the prior code is simplified into a single line where the structure of the dictionary is provided for each <code>student</code> in <code>students</code>.</p>
+</li>
+<li>
+<p>We can even simplify further as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1">students = [&quot;Hermione&quot;, &quot;Harry&quot;, &quot;Ron&quot;]
+</span><span id="__span-42-2">
+</span><span id="__span-42-3">gryffindors = {student: &quot;Gryffindor&quot; for student in students}
+</span><span id="__span-42-4">
+</span><span id="__span-42-5">print(gryffindors)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the dictionary will be constructed with key-value pairs.</p>
+</li>
+</ul>
+<h2 id="enumerate"><code>enumerate</code><a class="headerlink" href="#enumerate" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>We may wish to provide some ranking of each student. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-1">students = [&quot;Hermione&quot;, &quot;Harry&quot;, &quot;Ron&quot;]
+</span><span id="__span-43-2">
+</span><span id="__span-43-3">for i in range(len(students)):
+</span><span id="__span-43-4">    print(i + 1, students[i])
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how each student is enumerated when running this code.</p>
+</li>
+<li>
+<p>Utilizing enumeration, we can do the same:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1">students = [&quot;Hermione&quot;, &quot;Harry&quot;, &quot;Ron&quot;]
+</span><span id="__span-44-2">
+</span><span id="__span-44-3">for i, student in enumerate(students):
+</span><span id="__span-44-4">    print(i + 1, student)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how enumerate presents the index and the value of each <code>student</code>.</p>
+</li>
+<li>
+<p>You can learn more in Python’s documentation of <a href="https://docs.python.org/3/library/functions.html#enumerate"><code>enumerate</code></a>.</p>
+</li>
+</ul>
+<h2 id="generators-and-iterators">Generators and Iterators<a class="headerlink" href="#generators-and-iterators" title="Permanent link">&para;</a></h2>
+<ul>
+<li>In Python, there is a way to protect against your system running out of resources the problems they are addressing become too large.</li>
+<li>In the United States, it’s customary to “count sheep” in one’s mind when one is having a hard time falling asleep.</li>
+<li>
+<p>In the text editor window, type <code>code sleep.py</code> and code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1">n = int(input(&quot;What&#39;s n? &quot;))
+</span><span id="__span-45-2">for i in range(n):
+</span><span id="__span-45-3">    print(&quot;🐑&quot; * i)
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how this program will count the number of sheep you ask of it.</p>
+</li>
+<li>
+<p>We can make our program more sophisticated by adding a <code>main</code> function by coding as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1">def main():
+</span><span id="__span-46-2">    n = int(input(&quot;What&#39;s n? &quot;))
+</span><span id="__span-46-3">    for i in range(n):
+</span><span id="__span-46-4">        print(&quot;🐑&quot; * i)
+</span><span id="__span-46-5">
+</span><span id="__span-46-6">
+</span><span id="__span-46-7">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-46-8">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how a <code>main</code> function is provided.</p>
+</li>
+<li>
+<p>We have been getting into the habit of abstracting away parts of our code.</p>
+</li>
+<li>
+<p>We can call a sheep function by modifying our code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-47-1">def main():
+</span><span id="__span-47-2">    n = int(input(&quot;What&#39;s n? &quot;))
+</span><span id="__span-47-3">    for i in range(n):
+</span><span id="__span-47-4">        print(sheep(i))
+</span><span id="__span-47-5">
+</span><span id="__span-47-6">
+</span><span id="__span-47-7">def sheep(n):
+</span><span id="__span-47-8">    return &quot;🐑&quot; * n
+</span><span id="__span-47-9">
+</span><span id="__span-47-10">
+</span><span id="__span-47-11">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-47-12">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how the <code>main</code> function does the iteration.</p>
+</li>
+<li>
+<p>We can provide the <code>sheep</code> function more abilities. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-48-1">def main():
+</span><span id="__span-48-2">    n = int(input(&quot;What&#39;s n? &quot;))
+</span><span id="__span-48-3">    for s in sheep(n):
+</span><span id="__span-48-4">        print(s)
+</span><span id="__span-48-5">
+</span><span id="__span-48-6">
+</span><span id="__span-48-7">def sheep(n):
+</span><span id="__span-48-8">    flock = []
+</span><span id="__span-48-9">    for i in range(n):
+</span><span id="__span-48-10">        flock.append(&quot;🐑&quot; * i)
+</span><span id="__span-48-11">    return flock
+</span><span id="__span-48-12">
+</span><span id="__span-48-13">
+</span><span id="__span-48-14">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-48-15">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how we create a flock of sheep and return the <code>flock</code>.</p>
+</li>
+<li>
+<p>Executing our code, you might try different numbers of sheep such as <code>10</code>, <code>1000</code>, and <code>10000</code>. What if you asked for <code>1000000</code> sheep, your program might completely hang or crash. Because you have attempted to generate a massive list of sheep, your computer may be struggling to complete the computation.</p>
+</li>
+<li>
+<p>The <code>yield</code> generator can solve this problem by returning a small bit of the results at a time. In the text editor window, code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-49-1">def main():
+</span><span id="__span-49-2">    n = int(input(&quot;What&#39;s n? &quot;))
+</span><span id="__span-49-3">    for s in sheep(n):
+</span><span id="__span-49-4">        print(s)
+</span><span id="__span-49-5">
+</span><span id="__span-49-6">
+</span><span id="__span-49-7">def sheep(n):
+</span><span id="__span-49-8">    for i in range(n):
+</span><span id="__span-49-9">        yield &quot;🐑&quot; * i
+</span><span id="__span-49-10">
+</span><span id="__span-49-11">
+</span><span id="__span-49-12">if __name__ == &quot;__main__&quot;:
+</span><span id="__span-49-13">    main()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how <code>yield</code> provides only one value at a time while the <code>for</code> loop keeps working.</p>
+</li>
+<li>
+<p>You can learn more in Python’s documentation of <a href="https://docs.python.org/3/howto/functional.html#generators">generators</a>.</p>
+</li>
+<li>You can learn more in Python’s documentation of <a href="https://docs.python.org/3/howto/functional.html#iterators">iterators</a>.</li>
+</ul>
+<h2 id="congratulations">Congratulations!<a class="headerlink" href="#congratulations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>As you exit from this course, you have more of a mental model and toolbox to address programming-related problems.</li>
+<li>First, you learned about functions and variables.</li>
+<li>Second, you learned about conditionals.</li>
+<li>Third, you learned about loops.</li>
+<li>Fourth, you learned about exceptions.</li>
+<li>Fifth, you learned about libraries.</li>
+<li>Sixth, you learned about unit tests.</li>
+<li>Seventh, you learned about file I/O.</li>
+<li>Eighth, you learned about regular expressions.</li>
+<li>Most recently, you learned about object-oriented programming.</li>
+<li>Today, you learned about many other tools you can use.</li>
+</ul>
+<h2 id="this-was-cs50">This was CS50!<a class="headerlink" href="#this-was-cs50" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Creating a final program together, type <code>code say.py</code> in your terminal window and code as follows:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-50-1">import cowsay
+</span><span id="__span-50-2">import pyttsx3
+</span><span id="__span-50-3">
+</span><span id="__span-50-4">engine = pyttsx3.init()
+</span><span id="__span-50-5">this = input(&quot;What&#39;s this? &quot;)
+</span><span id="__span-50-6">cowsay.cow(this)
+</span><span id="__span-50-7">engine.say(this)
+</span><span id="__span-50-8">engine.runAndWait()
+</span></code></pre></div></td></tr></table></div>
+<p>Notice how running this program provides you with a spirited send-off.</p>
+</li>
+<li>
+<p>Our great hope is that you will use what you learned in this course to address real problems in the world, making our globe a better place.</p>
+</li>
+<li>This was CS50!</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Jack Cheng CC-BY-4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/anzchy" target="_blank" rel="noopener" title="GitHub | Jack Cheng" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://learning.jackcheng.chat/ME/support/" target="_blank" rel="noopener" title="打赏支持" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 64c0-17.7 14.3-32 32-32h384c70.7 0 128 57.3 128 128s-57.3 128-128 128h-32c0 53-43 96-96 96H192c-53 0-96-43-96-96zm384 160h32c35.3 0 64-28.7 64-64s-28.7-64-64-64h-32zM32 416h512c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../mkdocs/javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2881 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Jack Cheng的个人网站">
+      
+      
+        <meta name="author" content="Jack Cheng">
+      
+      
+        <link rel="canonical" href="https://learning.jackcheng.chat/CS/Python/Lecture0-introduction/">
+      
+      
+        <link rel="prev" href="../Python-Notes-202410/">
+      
+      
+        <link rel="next" href="../Lecture1-Conditionals/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>CS50P-Lecture0-Introduction - JackCheng的CS 学习网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-0" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="JackCheng的CS 学习网站" class="md-header__button md-logo" aria-label="JackCheng的CS 学习网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JackCheng的CS 学习网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CS50P-Lecture0-Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/anzchy/learning.jackcheng.chat" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    learning.jackcheng.chat
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ME/" class="md-tabs__link">
+          
+  
+    
+  
+  我
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  CS笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Family-Education/" class="md-tabs__link">
+          
+  
+    
+  
+  家庭建设
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Writing/" class="md-tabs__link">
+          
+  
+    
+  
+  写作
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Reproduce/" class="md-tabs__link">
+          
+  
+    
+  
+  转载
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../WEBSITE/" class="md-tabs__link">
+          
+  
+    
+  
+  网站
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="JackCheng的CS 学习网站" class="md-nav__button md-logo" aria-label="JackCheng的CS 学习网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    JackCheng的CS 学习网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/anzchy/learning.jackcheng.chat" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    learning.jackcheng.chat
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ME/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    我
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            我
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    个人介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    个人联系方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    个人公众账号
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/ability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    个人能力
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/business-trip-necessities/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    出差必备物品
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    打赏支持
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CS笔记
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Chatgpt/ChatGPT_Cookbook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChatGPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Excel/Excel-Cheatsheet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Excel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python-Notes-202410/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture0-Introduction
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture0-Introduction
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-code-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Code with Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bugs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improving-your-first-python-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improving Your First Python Program
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Improving Your First Python Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pseudocode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-improving-your-first-python-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Improving Your First Python Program
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strings-and-paremeters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strings and Paremeters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Strings and Paremeters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-small-problem-with-quotation-marks" class="md-nav__link">
+    <span class="md-ellipsis">
+      A small problem with quotation marks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formatting-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatting Strings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-on-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      More on Strings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integers-or-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integers or int
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readability-wins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Readability Wins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#float-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Float Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-on-floats" class="md-nav__link">
+    <span class="md-ellipsis">
+      More on Floats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#def" class="md-nav__link">
+    <span class="md-ellipsis">
+      Def
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#returning-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returning Values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summing-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summing Up
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture1-Conditionals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture1-Conditionals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture2-Loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture2-Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture3-Exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture3-Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture4-Libraries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture4-Libraries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lecture5-Unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture5-Unittest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture6-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture6-File-IO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture7-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture7-ReGex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture8-Object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture8-OoP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture9-et-cetera/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CS50P-Lecture9-et-cetera
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Regex
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Regex
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regex/RegexBuddy-tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regex-Buddy教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Regex/regex-cheatsheet-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    正则表达式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Shell%20/Shell_command_cookbook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Vim/vim-cheatsheet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Family-Education/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    家庭建设
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            家庭建设
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Family-Education/must-do-list-for-parents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    子女成长各阶段家长必做
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    英语
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            英语
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Family-Education/English/reading-list-for-each-stage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    孩子各阶段书单
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Family-Education/English/pronunciation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    英语发音
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Writing/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    写作
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            写作
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Reproduce/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    转载
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            转载
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../WEBSITE/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    网站
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            网站
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网站构建说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文章编写帮助
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    测试文档
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lecture 0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-code-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Code with Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bugs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improving-your-first-python-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improving Your First Python Program
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Improving Your First Python Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pseudocode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-improving-your-first-python-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Improving Your First Python Program
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strings-and-paremeters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strings and Paremeters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Strings and Paremeters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-small-problem-with-quotation-marks" class="md-nav__link">
+    <span class="md-ellipsis">
+      A small problem with quotation marks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formatting-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatting Strings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-on-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      More on Strings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integers-or-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integers or int
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readability-wins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Readability Wins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#float-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Float Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-on-floats" class="md-nav__link">
+    <span class="md-ellipsis">
+      More on Floats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#def" class="md-nav__link">
+    <span class="md-ellipsis">
+      Def
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#returning-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returning Values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summing-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summing Up
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/anzchy/learning.jackcheng.chat/edit/main/docs/CS/Python/Lecture0-introduction.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>CS50P-Lecture0-Introduction</h1>
+
+<h2 id="lecture-0">Lecture 0<a class="headerlink" href="#lecture-0" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#creating-code-with-python">Creating Code with Python</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#bugs">Bugs</a></li>
+<li><a href="#improving-your-first-python-program">Improving Your First Python Program</a><ul>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#pseudocode">Pseudocode</a></li>
+</ul>
+</li>
+<li><a href="#further-improving-your-first-python-program">Further Improving Your First Python Program</a></li>
+<li><a href="#strings-and-paremeters">Strings and Paremeters</a><ul>
+<li><a href="#a-small-problem-with-quotation-marks">A small problem with quotation marks</a></li>
+</ul>
+</li>
+<li><a href="#formatting-strings">Formatting Strings</a></li>
+<li><a href="#more-on-strings">More on Strings</a></li>
+<li><a href="#integers-or-int">Integers or int</a></li>
+<li><a href="#readability-wins">Readability Wins</a></li>
+<li><a href="#float-basics">Float Basics</a></li>
+<li><a href="#more-on-floats">More on Floats</a></li>
+<li><a href="#def">Def</a></li>
+<li><a href="#returning-values">Returning Values</a></li>
+<li><a href="#summing-up">Summing Up</a></li>
+</ul>
+<h2 id="creating-code-with-python">Creating Code with Python<a class="headerlink" href="#creating-code-with-python" title="Permanent link">&para;</a></h2>
+<ul>
+<li>VS Code is a special type of text editor that is called a compiler. At the top, you’ll notice a text editor. At the bottom, you will see a terminal where you can execute commands.</li>
+<li>In the terminal, you can execute <code>code hello.py</code> to start coding.</li>
+<li>In the text editor above, you can type <code>print("hello, world")</code>. This is a famous canonical program that nearly all coders write during their learning process.</li>
+<li>In the terminal window, you can execute commands. To run this program, you are going to need to move your cursor to the bottom of the screen, clicking in the terminal window. You can now type a second command in the terminal window. Next to the dollar sign, type <code>python hello.py</code> and press the enter key on your keyboard.</li>
+<li>Recall that computers really only understand zeros and ones. Therefore, when you run <code>python hello.py</code>, python will interpret the text that you created in <code>hello.py</code> and translate it into the zeros and ones that the computer can understand.</li>
+<li>The result of running the <code>python hello.py</code> program is <code>hello, world</code>.</li>
+<li>Congrats! You just created your first program.</li>
+</ul>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Functions are verbs or actions that the computer or computer language will already know how to perform.</li>
+<li>In your <code>hello.py</code> program, the <code>print</code> function knows how to print to the terminal window.</li>
+<li>The <code>print</code> function takes arguments. In this case, <code>"hello, world"</code> are the arguments that the <code>print</code> function takes.</li>
+</ul>
+<h2 id="bugs">Bugs<a class="headerlink" href="#bugs" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Bugs are a natural part of coding. These are mistakes, problems for you to solve! Don’t get discouraged! This is part of the process of becoming a great programmer.</li>
+<li>Imagine in our <code>hello.py</code> program that accidentally typed <code>print("hello, world"</code> notice that we missed the final <code>)</code> required by the compiler. If I purposefully make this mistake, you’ll the compiler will output an error in the terminal window!</li>
+<li>Often, the error messages will inform you of your mistakes and provide you clues on how to fix them. However, there will be many times when the compiler is not this kind.</li>
+</ul>
+<h2 id="improving-your-first-python-program">Improving Your First Python Program<a class="headerlink" href="#improving-your-first-python-program" title="Permanent link">&para;</a></h2>
+<ul>
+<li>We can personalize your first Python program.</li>
+<li>
+<p>In our text editor in <code>hello.py</code> we can add another function. <code>input</code> is a function that takes a prompt as an argument. We can edit our code to say</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-0-2"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello, world&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>This edit alone, however, will not allow your program to output what your user inputs. For that, we will need to introduce you to variables</p>
+</li>
+</ul>
+<h3 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A variable is just a container for a value within your own program.</li>
+<li>
+<p>In your program, you can introduce your own variable in your program by editing it to read</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-1-2"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello, world&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Notice that this equal <code>=</code> sign in the middle of <code>name = input("What's your name? ")</code> has a special role in programming. This equal sign literally assigns what is on the right to what is on the left. Therefore, the value returned by <code>input("What's your name? ")</code> is assigned to <code>name</code>.</p>
+</li>
+<li>
+<p>If you edit your code as follows, you will notice an error</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-2-2"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello, name&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>The program will return <code>hello, name</code> in the terminal window regardless of what the user types.</p>
+</li>
+<li>
+<p>Further editing our code, you could type</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-3-2"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span><span class="p">)</span>
+</span><span id="__span-3-3"><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>The result in the terminal window would be</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="n">What</span><span class="s1">&#39;s your name? David</span>
+</span><span id="__span-4-2"><span class="n">hello</span>
+</span><span id="__span-4-3"><span class="n">David</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>We are getting closer to the result we might intend!</p>
+</li>
+<li>
+<p>You can learn more in Python’s documentation on <a href="https://docs.python.org/3/library/datatypes.html">data types</a>.</p>
+</li>
+</ul>
+<h3 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Comments are a way for programmers to track what they are doing in their programs and even inform others about their intentions for a block of code. In short, they are notes for yourself and others who will see your code!</li>
+<li>
+<p>You can add comments to your program to be able to see what it is that your program is doing. You might edit your code as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="c1"># Ask the user for their name</span>
+</span><span id="__span-5-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-5-3"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span><span class="p">)</span>
+</span><span id="__span-5-4"><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Comments can also serve as a to-do list for you.</p>
+</li>
+</ul>
+<h3 id="pseudocode">Pseudocode<a class="headerlink" href="#pseudocode" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Pseudocode is an important type of comment that becomes a special type of to-do list, especially when you don’t understand how to accomplish a coding task. For example, in your code, you might edit your code to say:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="c1"># Ask the user for their name</span>
+</span><span id="__span-6-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-6-3">
+</span><span id="__span-6-4"><span class="c1"># Print hello</span>
+</span><span id="__span-6-5"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span><span class="p">)</span>
+</span><span id="__span-6-6">
+</span><span id="__span-6-7"><span class="c1"># Print the name inputted</span>
+</span><span id="__span-6-8"><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+</ul>
+<h2 id="further-improving-your-first-python-program">Further Improving Your First Python Program<a class="headerlink" href="#further-improving-your-first-python-program" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>We can further edit our code as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="c1"># Ask the user for their name</span>
+</span><span id="__span-7-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-7-3">
+</span><span id="__span-7-4"><span class="c1"># Print hello and the inputted name</span>
+</span><span id="__span-7-5"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello, &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>It turns out that some functions take many arguments.</p>
+</li>
+<li>
+<p>We can use a comma <code>,</code> to pass in multiple arguments by editing our code as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="c1"># Ask the user for their name</span>
+</span><span id="__span-8-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-8-3">
+</span><span id="__span-8-4"><span class="c1"># Print hello and the inputted name</span>
+</span><span id="__span-8-5"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The output in the terminal, if we typed “David” we would be <code>hello, David</code>. Success.</p>
+</li>
+</ul>
+<h2 id="strings-and-paremeters">Strings and Paremeters<a class="headerlink" href="#strings-and-paremeters" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A string, known as a <code>str</code> in Python, is a sequence of text.</li>
+<li>
+<p>Rewinding a bit in our code back to the following, there was a visual side effect of having the result appear on multiple lines:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="c1"># Ask the user for their name</span>
+</span><span id="__span-9-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-9-3"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span><span class="p">)</span>
+</span><span id="__span-9-4"><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Functions take arguments that influence their behavior. If we look at the documentation for <a href="https://docs.python.org/3/library/functions.html#print"><code>print</code></a> you’ll notice we can learn a lot about the arguments that the print function takes.</p>
+</li>
+<li>Looking at this documentation, you’ll learn that the print function automatically includes a piece of code <code>end='\n'. This</code> \n <code>indicates that the print function will automatically create a line break when run. The print function takes an argument called</code> end` and the default is to create a new line.</li>
+<li>However, we can technically provide an argument for <code>end</code> ourselves such that a new line is not created!</li>
+<li>
+<p>We can modify our code as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><span class="c1"># Ask the user for their name</span>
+</span><span id="__span-10-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-10-3"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-10-4"><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>By providing <code>end=""</code> we are overwriting the default value of <code>end</code> such that it never creates a new line after this first print statement. Providing the name as “David”, the output in the terminal window will be <code>hello, David</code>.</p>
+</li>
+<li>
+<p>Parameters, therefore, are arguments that can be taken by a function.</p>
+</li>
+<li>
+<p>You can learn more in Python’s documentation on <a href="https://docs.python.org/3/library/functions.html#print"><code>print</code></a>.</p>
+</li>
+</ul>
+<h3 id="a-small-problem-with-quotation-marks">A small problem with quotation marks<a class="headerlink" href="#a-small-problem-with-quotation-marks" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Notice how adding quotation marks as part of your string is challenging.</li>
+<li><code>print("hello,"friend"")</code> will not work, and the compiler will throw an error.</li>
+<li>Generally, there are two approaches to fixing this. First, you could simply change the quotes to single quotation marks.</li>
+<li>Another, more commonly used approach would be code as <code>print("hello, \"friend\"")</code>. The backslashes tell the compiler that the following character should be considered a quotation mark in the string and avoid a compiler error.</li>
+</ul>
+<h2 id="formatting-strings">Formatting Strings<a class="headerlink" href="#formatting-strings" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Probably the most elegant way to use strings would be as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><span class="c1"># Ask the user for their name</span>
+</span><span id="__span-11-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-11-3"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Notice the <code>f</code> in <code>print(f"hello, {name}")</code>. This <code>f</code> is a special indicator for Python to treat this string a special way, different than previous approaches we have illustrated in this lecture. Expect that you will be using this style of strings quite frequently in this course.</p>
+</li>
+</ul>
+<h2 id="more-on-strings">More on Strings<a class="headerlink" href="#more-on-strings" title="Permanent link">&para;</a></h2>
+<ul>
+<li>You should never expect your user to cooperate as intended. Therefore, you will need to ensure that the input of your user is corrected or checked.</li>
+<li>It turns out that built into strings is the ability to remove whitespace from a string.</li>
+<li>
+<p>By utilizing the method <code>strip</code> on <code>name</code> as <code>name = name.strip()</code>, will strip all the whitespaces on the left and right of the users input. You can modify your code to be:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><span class="c1"># Ask the user for their name</span>
+</span><span id="__span-12-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-12-3">
+</span><span id="__span-12-4"><span class="c1"># Remove whitespace from the str</span>
+</span><span id="__span-12-5"><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span><span id="__span-12-6">
+</span><span id="__span-12-7"><span class="c1"># Print the output</span>
+</span><span id="__span-12-8"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Rerunning this program, regardless of how many spaces you type before or after the name, it will strip off all the whitespace.</p>
+</li>
+<li>
+<p>Using the <code>title</code> method, it would title case the user’s name:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><span class="c1"># Ask the user for their name</span>
+</span><span id="__span-13-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-13-3">
+</span><span id="__span-13-4"><span class="c1"># Remove whitespace from the str</span>
+</span><span id="__span-13-5"><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span><span id="__span-13-6">
+</span><span id="__span-13-7"><span class="c1"># Capitalize the first letter of each word</span>
+</span><span id="__span-13-8"><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+</span><span id="__span-13-9">
+</span><span id="__span-13-10"><span class="c1"># Print the output</span>
+</span><span id="__span-13-11"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>By this point, you might be very tired of typing <code>python</code> repeatedly in the terminal window. You cause use the up arrow of your keyboard to recall the most recent terminal commands you have made.</p>
+</li>
+<li>
+<p>Notice that you can modify your code to be more efficient:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><span class="c1"># Ask the user for their name</span>
+</span><span id="__span-14-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-14-3">
+</span><span id="__span-14-4"><span class="c1"># Remove whitespace from the str and capitalize the first letter of each word</span>
+</span><span id="__span-14-5"><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+</span><span id="__span-14-6">
+</span><span id="__span-14-7"><span class="c1"># Print the output</span>
+</span><span id="__span-14-8"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>This creates the same result as your previous code.</p>
+</li>
+<li>
+<p>We could even go further!</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><span class="c1"># Ask the user for their name, remove whitespace from the str and capitalize the first letter of each word</span>
+</span><span id="__span-15-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+</span><span id="__span-15-3">
+</span><span id="__span-15-4"><span class="c1"># Print the output</span>
+</span><span id="__span-15-5"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>You can learn more about strings in Python’s documentation on <a href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a></p>
+</li>
+</ul>
+<h2 id="integers-or-int">Integers or int<a class="headerlink" href="#integers-or-int" title="Permanent link">&para;</a></h2>
+<ul>
+<li>In Python, an integer is referred to as an <code>int</code>.</li>
+<li>In the world of mathematics, we are familiar with +, -, *, /, and % operators. That last operator <code>%</code> or modulo operator may not be very familiar to you.</li>
+<li>You don’t have to use the text editor window in your compiler to run Python code. Down in your terminal, you can run <code>python</code> alone. You will be presented with <code>&gt;&gt;&gt;</code> in the terminal window. You can then run live, interactive code. You could type <code>1+1</code>, and it will run that calculation. This mode will not commonly be used during this course.</li>
+<li>Opening up VS Code again, we can type <code>code calculator.py</code> in the terminal. This will create a new file in which we will create our own calculator.</li>
+<li>
+<p>First, we can declare a few variables.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-16-2"><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-16-3">
+</span><span id="__span-16-4"><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span><span id="__span-16-5">
+</span><span id="__span-16-6"><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Naturally, when we run <code>python calculator.py</code> we get the result in the terminal window of <code>3</code>. We can make this more interactive using the <code>input</code> function.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s x? &quot;</span><span class="p">)</span>
+</span><span id="__span-17-2"><span class="n">y</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s y? &quot;</span><span class="p">)</span>
+</span><span id="__span-17-3">
+</span><span id="__span-17-4"><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span><span id="__span-17-5">
+</span><span id="__span-17-6"><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>Running this program, we discover that the output is incorrect as <code>12</code>. Why might this be?</p>
+</li>
+<li>
+<p>Prior, we have seen how the <code>+</code> sign concatenates two strings. Because your input from your keyboard on your computer comes into the compiler as text, it is treated as a string. We, therefore, need to convert this input from a string to an integer. We can do so as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s x? &quot;</span><span class="p">)</span>
+</span><span id="__span-18-2"><span class="n">y</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s y? &quot;</span><span class="p">)</span>
+</span><span id="__span-18-3">
+</span><span id="__span-18-4"><span class="n">z</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span><span id="__span-18-5">
+</span><span id="__span-18-6"><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The result is now correct. The use of <code>int(x)</code> is called “casting,” where a value is temporarily changed from one type of variable (in this case, a string) to another (here, an integer).</p>
+</li>
+<li>
+<p>We can further improve our program as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s x? &quot;</span><span class="p">))</span>
+</span><span id="__span-19-2"><span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s y? &quot;</span><span class="p">))</span>
+</span><span id="__span-19-3">
+</span><span id="__span-19-4"><span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>This illustrates that you can run functions on functions. The inner function is run first, and then the outer one is run. First, the <code>input</code> function is run. Then, the <code>int</code> function.</p>
+</li>
+<li>
+<p>You can learn more in Python’s documtenation of <a href="https://docs.python.org/3/library/functions.html?highlight=float#int"><code>int</code></a>.</p>
+</li>
+</ul>
+<h2 id="readability-wins">Readability Wins<a class="headerlink" href="#readability-wins" title="Permanent link">&para;</a></h2>
+<ul>
+<li>When deciding on your approach to a coding task, remember that one could make a reasonable argument for many approaches to the same problem.</li>
+<li>Regardless of what approach you take to a programming task, remember that your code must be readable. You should use comments to give yourself and others clues about what your code is doing. Further, you should create code in a way that is readable.</li>
+</ul>
+<h2 id="float-basics">Float Basics<a class="headerlink" href="#float-basics" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A floating point value is a real number that has a decimal point in it, such as <code>0.52</code>.</li>
+<li>
+<p>You can change your code to support floats as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s x? &quot;</span><span class="p">))</span>
+</span><span id="__span-20-2"><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s y? &quot;</span><span class="p">))</span>
+</span><span id="__span-20-3">
+</span><span id="__span-20-4"><span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>This change allows your user to enter <code>1.2</code> and <code>3.4</code> to present a total of <code>4.6</code>.</p>
+</li>
+<li>
+<p>Let’s imagine, however, that you want to round the total to the nearest integer. Looking at the Python documentation for <code>round</code>, you’ll see that the available arguments are <code>round(number[n, ndigits])</code>. Those square brackets indicate that something optional can be specified by the programmer. Therefore, you could do <code>round(n)</code> to round a digit to its nearest integer. Alternatively, you could code as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><span class="c1"># Get the user&#39;s input</span>
+</span><span id="__span-21-2"><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s x? &quot;</span><span class="p">))</span>
+</span><span id="__span-21-3"><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s y? &quot;</span><span class="p">))</span>
+</span><span id="__span-21-4">
+</span><span id="__span-21-5"><span class="c1"># Create a rounded result</span>
+</span><span id="__span-21-6"><span class="n">z</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-21-7">
+</span><span id="__span-21-8"><span class="c1"># Print the result</span>
+</span><span id="__span-21-9"><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The output will be rounded to the nearest integer.</p>
+</li>
+<li>
+<p>What if we wanted to format the output of long numbers? For example, rather than seeing <code>1000</code>, you may wish to see <code>1,000</code>. You could modify your code as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><span class="c1"># Get the user&#39;s input</span>
+</span><span id="__span-22-2"><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s x? &quot;</span><span class="p">))</span>
+</span><span id="__span-22-3"><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s y? &quot;</span><span class="p">))</span>
+</span><span id="__span-22-4">
+</span><span id="__span-22-5"><span class="c1"># Create a rounded result</span>
+</span><span id="__span-22-6"><span class="n">z</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-22-7">
+</span><span id="__span-22-8"><span class="c1"># Print the formatted result</span>
+</span><span id="__span-22-9"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">z</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Though quite cryptic, that <code>print(f"{z:,}")</code> creates a scenario where the outputted <code>z</code> will include commas where the result could look like <code>1,000</code> or <code>2,500</code>.</p>
+</li>
+</ul>
+<h2 id="more-on-floats">More on Floats<a class="headerlink" href="#more-on-floats" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>How can we round floating point values? First, modify your code as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><span class="c1"># Get the user&#39;s input</span>
+</span><span id="__span-23-2"><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s x? &quot;</span><span class="p">))</span>
+</span><span id="__span-23-3"><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s y? &quot;</span><span class="p">))</span>
+</span><span id="__span-23-4">
+</span><span id="__span-23-5"><span class="c1"># Calculate the result</span>
+</span><span id="__span-23-6"><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+</span><span id="__span-23-7">
+</span><span id="__span-23-8"><span class="c1"># Print the result</span>
+</span><span id="__span-23-9"><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>When inputting <code>2</code> as x and <code>3</code> as y, the result z is <code>0.6666666666</code>, seemingly going on to infinite as we might expect.</p>
+</li>
+<li>
+<p>Let’s imagine that we want to round this down. We could modify our code as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><span class="c1"># Get the user&#39;s input</span>
+</span><span id="__span-24-2"><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s x? &quot;</span><span class="p">))</span>
+</span><span id="__span-24-3"><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s y? &quot;</span><span class="p">))</span>
+</span><span id="__span-24-4">
+</span><span id="__span-24-5"><span class="c1"># Calculate the result and round</span>
+</span><span id="__span-24-6"><span class="n">z</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-24-7">
+</span><span id="__span-24-8"><span class="c1"># Print the result</span>
+</span><span id="__span-24-9"><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>As we might expect, this will round the result to the nearest two decimal points.</p>
+</li>
+<li>
+<p>We could also use <code>fstring</code> to format the output as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><span class="c1"># Get the user&#39;s input</span>
+</span><span id="__span-25-2"><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s x? &quot;</span><span class="p">))</span>
+</span><span id="__span-25-3"><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s y? &quot;</span><span class="p">))</span>
+</span><span id="__span-25-4">
+</span><span id="__span-25-5"><span class="c1"># Calculate the result</span>
+</span><span id="__span-25-6"><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+</span><span id="__span-25-7">
+</span><span id="__span-25-8"><span class="c1"># Print the result</span>
+</span><span id="__span-25-9"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>This cryptic <code>fstring</code> code displays the same as our prior rounding strategy.</p>
+</li>
+<li>
+<p>You can learn more in Python’s documentation of <a href="https://docs.python.org/3/library/functions.html?highlight=float#float"><code>float</code></a>.</p>
+</li>
+</ul>
+<h2 id="def">Def<a class="headerlink" href="#def" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Wouldn’t it be nice to create our own functions?</li>
+<li>
+<p>Let’s bring back our final code of <code>hello.py</code> by typing <code>code hello.py</code> into the terminal window. Your starting code should look as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><span class="c1"># Ask the user for their name, remove whitespace from the str and capitalize the first letter of each word</span>
+</span><span id="__span-26-2"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+</span><span id="__span-26-3">
+</span><span id="__span-26-4"><span class="c1"># Print the output</span>
+</span><span id="__span-26-5"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>We can better our code to create our own special function that says “hello” for us!</p>
+</li>
+<li>
+<p>Erasing all our code in our text editor, let’s start from scratch:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-27-2"><span class="n">hello</span><span class="p">()</span>
+</span><span id="__span-27-3"><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Attempting to run this code, your compiler will throw an error. After all, there is no defined function for <code>hello</code>.</p>
+</li>
+<li>
+<p>We can create our own function called <code>hello</code> as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+</span><span id="__span-28-2">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</span><span id="__span-28-3">
+</span><span id="__span-28-4">
+</span><span id="__span-28-5"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-28-6"><span class="n">hello</span><span class="p">()</span>
+</span><span id="__span-28-7"><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Notice that everything under <code>def hello()</code> is indented. Python is an indented language. It uses indentation to understand what is part of the above function. Therefore, everything in the <code>hello</code> function must be indented. When something is not indented, it treats it as if it is not inside the <code>hello</code> function. Running <code>python hello.py</code> in the terminal window, you’ll see that your output is not exactly as you may want.</p>
+</li>
+<li>
+<p>We can further improve our code:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><span class="c1"># Create our own function</span>
+</span><span id="__span-29-2"><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">to</span><span class="p">):</span>
+</span><span id="__span-29-3">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span>
+</span><span id="__span-29-4">
+</span><span id="__span-29-5">
+</span><span id="__span-29-6"><span class="c1"># Output using our own function</span>
+</span><span id="__span-29-7"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-29-8"><span class="n">hello</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Here, in the first lines, you are creating your <code>hello</code> function. This time, however, you are telling the compiler that this function takes a single parameter: a variable called <code>to</code>. Therefore, when you call <code>hello(name)</code> the computer passes <code>name</code> into the <code>hello</code> function as <code>to</code>. This is how we pass values into functions. Very useful! Running <code>python hello.py</code> in the terminal window, you’ll see that the output is much closer to our ideal presented earlier in this lecture.</p>
+</li>
+<li>
+<p>We can change our code to add a default value to <code>hello</code>:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><span class="c1"># Create our own function</span>
+</span><span id="__span-30-2"><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="s2">&quot;world&quot;</span><span class="p">):</span>
+</span><span id="__span-30-3">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span>
+</span><span id="__span-30-4">
+</span><span id="__span-30-5">
+</span><span id="__span-30-6"><span class="c1"># Output using our own function</span>
+</span><span id="__span-30-7"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-30-8"><span class="n">hello</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-30-9">
+</span><span id="__span-30-10"><span class="c1"># Output without passing the expected arguments</span>
+</span><span id="__span-30-11"><span class="n">hello</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Test out your code yourself. Notice how the first <code>hello</code> will behave as you might expect, and the second hello, which is not passed a value, will, by default, output <code>hello, world</code>.</p>
+</li>
+<li>
+<p>We don’t have to have our function at the start of our program. We can move it down, but we need to tell the compiler that we have a <code>main</code> function and a separate <code>hello</code> function.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-31-2">
+</span><span id="__span-31-3">    <span class="c1"># Output using our own function</span>
+</span><span id="__span-31-4">    <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-31-5">    <span class="n">hello</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-31-6">
+</span><span id="__span-31-7">    <span class="c1"># Output without passing the expected arguments</span>
+</span><span id="__span-31-8">    <span class="n">hello</span><span class="p">()</span>
+</span><span id="__span-31-9">
+</span><span id="__span-31-10">
+</span><span id="__span-31-11"><span class="c1"># Create our own function</span>
+</span><span id="__span-31-12"><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="s2">&quot;world&quot;</span><span class="p">):</span>
+</span><span id="__span-31-13">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>This alone, however, will create an error of sorts. If we run <code>python hello.py</code>, nothing happens! The reason for this is that nothing in this code is actually calling the <code>main</code> function and bringing our program to life.</p>
+</li>
+<li>
+<p>The following very small modification will call the <code>main</code> function and restore our program to working order:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-32-2">
+</span><span id="__span-32-3">    <span class="c1"># Output using our own function</span>
+</span><span id="__span-32-4">    <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+</span><span id="__span-32-5">    <span class="n">hello</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-32-6">
+</span><span id="__span-32-7">    <span class="c1"># Output without passing the expected arguments</span>
+</span><span id="__span-32-8">    <span class="n">hello</span><span class="p">()</span>
+</span><span id="__span-32-9">
+</span><span id="__span-32-10">
+</span><span id="__span-32-11"><span class="c1"># Create our own function</span>
+</span><span id="__span-32-12"><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="s2">&quot;world&quot;</span><span class="p">):</span>
+</span><span id="__span-32-13">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello,&quot;</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span>
+</span><span id="__span-32-14">
+</span><span id="__span-32-15">
+</span><span id="__span-32-16"><span class="n">main</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+</ul>
+<h2 id="returning-values">Returning Values<a class="headerlink" href="#returning-values" title="Permanent link">&para;</a></h2>
+<ul>
+<li>You can imagine many scenarios where you don’t just want a function to perform an action but also to return a value back to the main function. For example, rather than simply printing the calculation of <code>x + y</code>, you may want a function to return the value of this calculation back to another part of your program. This “passing back” of a value we call a <code>return</code> value.</li>
+<li>
+<p>Returning to our <code>calculator.py</code> code by typing <code>code calculator.py</code>. Erase all code there. Rework the code as follows:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-33-2">    <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s x? &quot;</span><span class="p">))</span>
+</span><span id="__span-33-3">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x squared is&quot;</span><span class="p">,</span> <span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span id="__span-33-4">
+</span><span id="__span-33-5">
+</span><span id="__span-33-6"><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-33-7">    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span>
+</span><span id="__span-33-8">
+</span><span id="__span-33-9">
+</span><span id="__span-33-10"><span class="n">main</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Effectively, <code>x</code> is passed to <code>square</code>. Then, the calculation of <code>x * x</code> is returned back to the main function.</p>
+</li>
+</ul>
+<h2 id="summing-up">Summing Up<a class="headerlink" href="#summing-up" title="Permanent link">&para;</a></h2>
+<p>Through the work of this single lecture, you have learned abilities that you will use countless times in your own programs. You have learned about…</p>
+<ul>
+<li>Creating your first programs in Python;</li>
+<li>Functions;</li>
+<li>Bugs;</li>
+<li>Variables;</li>
+<li>Comments;</li>
+<li>Pseudocode;</li>
+<li>Strings;</li>
+<li>Parameters;</li>
+<li>Formatted Strings;</li>
+<li>Integers;</li>
+<li>Principles of readability;</li>
+<li>Floats;</li>
+<li>Creating your own functions; and</li>
+<li>Return values.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Jack Cheng CC-BY-4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/anzchy" target="_blank" rel="noopener" title="GitHub | Jack Cheng" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://learning.jackcheng.chat/ME/support/" target="_blank" rel="noopener" title="打赏支持" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 64c0-17.7 14.3-32 32-32h384c70.7 0 128 57.3 128 128s-57.3 128-128 128h-32c0 53-43 96-96 96H192c-53 0-96-43-96-96zm384 160h32c35.3 0 64-28.7 64-64s-28.7-64-64-64h-32zM32 416h512c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../mkdocs/javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
